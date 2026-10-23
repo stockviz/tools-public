@@ -63,6 +63,15 @@ program follows every page in code and reports the completed path, row and page
 counts, actual dates and SHA-256. It never overwrites an existing file. Failed
 exports remain clearly named partial files rather than completed CSVs.
 
+Transient concurrency, page-rate and policy-unavailable errors retry the exact
+same page only when the server supplies an explicit valid delay: at most three
+attempts per page and 30 seconds of retry waiting across the entire export.
+Surfaced SDK HTTP 429 errors use valid `Retry-After` hints under these same bounds.
+Long resets (such as 300 seconds), daily quotas, query timeouts and unknown errors
+fail without a completed CSV. Safe diagnostics report the recognized category,
+retry/reset metadata and retained partial path, not raw SDK messages. Partial
+files cannot be resumed; wait or fix the cause before starting a new export.
+
 ## Use from Goose
 
 After login, add a command-line/stdio MCP extension to Goose using this command.
@@ -77,6 +86,11 @@ Start with a tool timeout of 300 seconds. The extension exposes
 download tools and return file metadata instead of copying remote tool results.
 Goose's shell and the extension must share the filesystem to access the returned
 paths.
+
+The extension runs at most two complete downloads at once; additional calls
+queue, so allow for queue time in Goose's timeout. Cancellation releases a slot
+and never publishes an incomplete export. Independent CLI or server processes
+have separate queues and remain limited by the remote server's policy.
 
 ## Privacy and integrity
 
