@@ -167,6 +167,114 @@ queue, so allow for queue time in Goose's timeout. Cancellation releases a slot
 and never publishes an incomplete export. Independent CLI or server processes
 have separate queues and remain limited by the remote server's policy.
 
+### Ask Goose to use the downloader
+
+Enable the extension in the current session. After adding it permanently, start
+a new session if its tools are not available. Name the local tool explicitly,
+especially if you also enabled the remote StockViz MCP extension. Remote
+`get_equity_history` returns one page; local `download_equity_history` saves the
+complete requested history and returns file metadata.
+
+Paste any of these prompts into Goose. They are chat prompts, not shell commands.
+Use a new filename each time: the downloader never overwrites an existing file.
+
+#### Check that the tools are available
+
+```text
+Show me the available tools from the local StockViz CSV downloader extension.
+Confirm that download_nav_history, download_index_history,
+download_equity_history and list_equities are available. Do not download yet.
+```
+
+#### Download a short equity window
+
+```text
+Use the local download_equity_history tool for symbol "RELIANCE", series "EQ",
+start "2026-10-19", end "2026-10-22", filename "reliance-eq-window.csv",
+and page_size 2. Let the tool handle every page. Return the completed path,
+row count, page count and SHA-256; do not copy history rows into chat.
+```
+
+#### Discover an equity before downloading
+
+```text
+Use the local list_equities tool with search "RELIANCE", series "EQ" and limit 10.
+Show the returned symbol/series pairs and date coverage. Do not assume the
+catalog is complete if has_more is true, and do not download anything yet.
+```
+
+Catalog lookups can time out even with a small limit. For history downloads,
+always use an explicit symbol and series; do not guess a series from the symbol.
+
+#### Download a mutual fund's NAV
+
+```text
+Use the local download_nav_history tool for scheme_code "103734",
+filename "quantum-liquid-nav.csv" and start "2020-01-01". Omit end to use
+available observations through the latest stored date. Return only the completed
+file metadata and any data warnings, not the NAV rows or pagination tokens.
+```
+
+Use the exact scheme code for the intended plan/option. This downloader does not
+resolve fund names or choose between Direct, Regular, Growth and distribution
+options.
+
+#### Download an index
+
+```text
+Use the local download_index_history tool for index_name "NIFTY SMALLCAP 250 TR",
+filename "smallcap250-tr-2021.csv", start "2021-01-04" and end "2021-01-08".
+Return the saved path, row count, actual first/last dates and SHA-256.
+Do not substitute a similarly named price-return index.
+```
+
+Use an exact index catalog name. The local extension has no index-catalog tool;
+obtain the name from the remote server's catalog if you do not know it.
+
+#### Download available equity history
+
+```text
+Use the local download_equity_history tool for symbol "RELIANCE", series "EQ"
+and filename "reliance-eq-available.csv". Omit start and end to request all
+available observations. Return the completed metadata and warnings only.
+If a quota, timeout or page-budget error occurs, report the failure and partial
+file path; do not describe an incomplete export as complete.
+```
+
+Full-history requests can take longer and hit remote quotas. Start with a short
+window to check the setup. Increasing Goose's timeout does not increase the
+server's quotas or the downloader's retry/page budgets.
+
+#### Compare two saved CSVs
+
+```text
+Use the local download_nav_history tool to save scheme_code "103734" as
+"quantum-liquid-2021.csv", and download_index_history to save index_name
+"NIFTY SMALLCAP 250 TR" as "smallcap250-tr-compare-2021.csv". For both, use
+start "2021-01-04" and end "2021-01-08". Return both completed file reports.
+Do not calculate returns from partial tool pages or invent missing observations.
+```
+
+Any later analysis must open the completed CSVs using a separate file-reading or
+analysis tool. These download tools only save files; they do not calculate
+performance. NAV is not distribution-adjusted, and raw equity prices are not
+corporate-action-adjusted.
+
+### Files and troubleshooting
+
+Supply CSV basenames such as `fund.csv`, not `exports/fund.csv` or an absolute
+path. Files go into the configured `output_dir`, by default `exports/` beside
+`config.json`. Goose can access them only if it shares that filesystem.
+
+If Goose cannot find a tool, check that this local STDIO extension is enabled in
+the current session and started without errors, then start a new session. If it
+calls the remote paginated tool instead, repeat the exact local `download_*`
+name. For authorization failures, rerun the documented `login` command in a
+terminal under the same OS account; downloads do not open browser login.
+For an existing-file error, choose a new filename. For timeouts or quota errors,
+report the failure and follow the documented retry guidance instead of claiming
+success.
+
 ## Privacy and integrity
 
 The ZIP includes only a generated public config, never the publisher's local
