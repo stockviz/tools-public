@@ -1,7 +1,7 @@
 # MCP history CSV downloader
 
 This directory contains `mcp-consumer-share.zip`, a source-only distribution of
-a local downloader for compatible NAV and index MCP history tools. It saves all
+a local downloader for compatible NAV, index and raw equity MCP history tools. It saves all
 pages to a CSV without asking a language model to copy rows or pagination tokens.
 
 ## Install
@@ -23,7 +23,8 @@ provided by your operator. Configure your private state and output directories.
 Relative paths resolve beside the config file. There is no shared account or
 built-in production endpoint.
 
-The server must expose compatible `get_nav_history` and `get_index_history`
+The server must expose compatible `get_nav_history`, `get_index_history`,
+`get_equity_history` and `list_equities`
 tools and grant `research:read`. Enable `legacy_registration` only if your
 operator confirms that the server needs the legacy public-client adapter.
 
@@ -58,6 +59,23 @@ For an index, use its exact catalog name:
   --output ./exports/index.csv
 ```
 
+For equities, discover and export an explicit symbol/series pair:
+
+```sh
+.venv/bin/stockviz-mcp-consumer --config config.json equities \
+  --search RELIANCE --series EQ --page-size 2
+
+.venv/bin/stockviz-mcp-consumer --config config.json equity \
+  --symbol RELIANCE --series EQ --start 2026-10-19 --end 2026-10-22 \
+  --page-size 2 --output ./exports/reliance-eq.csv
+```
+
+The catalog returns one bounded page. Forward `--cursor` literally with unchanged
+search, series and page size. Default catalog size is 250; maximum is 1,000.
+Broad catalog scans can time out despite a small output limit. Both symbol and
+series are mandatory for history; different series are different instruments.
+Equity reads share the account's existing remote quotas and retry policy.
+
 Dates are inclusive. Omit the end date for latest available observations. The
 program follows every page in code and reports the completed path, row and page
 counts, actual dates and SHA-256. It never overwrites an existing file. Failed
@@ -82,7 +100,8 @@ Replace `<PROJECT_DIR>` with the absolute path of the extracted project:
 ```
 
 Start with a tool timeout of 300 seconds. The extension exposes
-`download_nav_history` and `download_index_history`. Ask Goose to use these local
+`download_nav_history`, `download_index_history`, `download_equity_history`
+and the read-only catalog tool `list_equities`. Ask Goose to use these local
 download tools and return file metadata instead of copying remote tool results.
 Goose's shell and the extension must share the filesystem to access the returned
 paths.
@@ -102,6 +121,16 @@ The downloader validates counts, identity, dates, sort keys and continuation
 progress. It preserves numeric strings and verifies the CSV before publication.
 A remote mirror refresh can still change data between pages; the export is not
 a guaranteed database snapshot. Raw NAV is not distribution-adjusted.
+
+Equity CSV columns are
+`symbol,series,date,open,high,low,close,last,previous_close,total_traded_quantity,total_traded_value,num_transactions`.
+Prices and activity are raw stored values, not adjusted prices or total returns.
+Nullable fields become empty cells; DOUBLE strings retain database text, not
+arbitrary precision. Native SQL integer `num_transactions` values become integer
+CSV text without floating-point conversion. Duplicate dates fail closed rather than being deduplicated.
+Any failed page prevents a completed export. Ownership does not establish source
+freshness. There is no equity summary tool; require all history pages before
+calculating a window summary.
 
 The bundle never includes local runtime configuration or OAuth credentials.
 
