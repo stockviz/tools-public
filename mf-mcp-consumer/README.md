@@ -15,20 +15,30 @@ cd mcp-consumer
 python3 -m venv .venv
 .venv/bin/python -m pip install -r requirements.lock.txt
 .venv/bin/python -m pip install -e .
-cp config.example.json config.json
 ```
 
-Edit `config.json` and replace `https://mcp.example.com/mcp` with the MCP endpoint
-provided by your operator. Configure your private state and output directories.
-Relative paths resolve beside the config file. There is no shared account or
-built-in production endpoint.
+The included `config.json` is ready to use:
+
+```json
+{
+  "server_url": "https://mutual-fund-mcp.stockviz.workers.dev/mcp",
+  "output_dir": "./exports"
+}
+```
+
+You do not need to copy or edit configuration before login. OAuth state uses your
+own per-user home directory, not a shared cache. Relative output paths resolve
+beside the config file. To use another compatible endpoint, edit `server_url` or
+pass `--url`. Standard SDK OAuth client registration is used by default.
 
 The server must expose compatible `get_nav_history`, `get_index_history`,
 `get_equity_history` and `list_equities`
-tools and grant `research:read`. Enable `legacy_registration` only if your
-operator confirms that the server needs the legacy public-client adapter.
+tools and grant `research:read`. StockViz PortfolioManagerMf supports standard
+OAuth client registration.
 
 ## Sign in
+
+Sign in with the included config:
 
 ```sh
 .venv/bin/stockviz-mcp-consumer --config config.json login
@@ -113,8 +123,9 @@ have separate queues and remain limited by the remote server's policy.
 
 ## Privacy and integrity
 
-The ZIP excludes deployment configuration, credentials, virtual environments,
-exports, logs and caches. Do not distribute your configured working directory.
+The ZIP includes only a generated public config, never the publisher's local
+configuration, credentials, virtual environments, exports, logs or caches. Do not
+distribute your configured working directory.
 Runtime reports contain your paths and endpoint; review them before sharing.
 
 The downloader validates counts, identity, dates, sort keys and continuation
@@ -132,7 +143,8 @@ Any failed page prevents a completed export. Ownership does not establish source
 freshness. There is no equity summary tool; require all history pages before
 calculating a window summary.
 
-The bundle never includes local runtime configuration or OAuth credentials.
+The builder generates `config.json` from fixed public defaults without reading the
+publisher's local config. The bundle never includes OAuth credentials or state.
 
 See the extracted project's README for the full contract, safety checks,
 configuration options and tests.
