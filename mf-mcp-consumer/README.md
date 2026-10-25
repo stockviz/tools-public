@@ -6,8 +6,9 @@ pages to a CSV without asking a language model to copy rows or pagination tokens
 
 ## Install
 
-Use Python 3.11 or later on Linux or macOS. Extract the ZIP on the machine where
-you want the CSV files to live:
+Use Python 3.11 or later on Linux/macOS (POSIX). Install on the same machine
+and under the same OS account that will run Goose and own the CSV files. In a
+terminal, start in the directory containing the downloaded ZIP:
 
 ```sh
 unzip mcp-consumer-share.zip
@@ -16,6 +17,15 @@ python3 -m venv .venv
 .venv/bin/python -m pip install -r requirements.lock.txt
 .venv/bin/python -m pip install -e .
 ```
+
+The ZIP has one outer project folder, `mcp-consumer/` (hyphen). Its child
+`mcp_consumer/` (underscore) is the Python package, not the installation root.
+Run the remaining terminal commands from the outer folder, which contains
+`pyproject.toml` and `config.json`. If you already extracted the ZIP, open that
+folder rather than extracting again. The ZIP deliberately excludes `.venv`;
+installation creates `.venv/bin/stockviz-mcp-consumer`. Use this same environment
+for login and Goose. Do not point Goose at a virtual environment from another
+machine or a directory you later move.
 
 The included `config.json` is ready to use:
 
@@ -102,14 +112,50 @@ files cannot be resumed; wait or fix the cause before starting a new export.
 
 ## Use from Goose
 
-After login, add a command-line/stdio MCP extension to Goose using this command.
-Replace `<PROJECT_DIR>` with the absolute path of the extracted project:
+Run `login` first on this machine under the OS account that runs Goose. From
+the outer `mcp-consumer/` project folder, generate a command with absolute paths
+and the quoting Goose needs, including when your installation path has spaces:
 
-```text
-<PROJECT_DIR>/.venv/bin/stockviz-mcp-consumer --config <PROJECT_DIR>/config.json serve
+```sh
+GOOSE_COMMAND="$(.venv/bin/python - <<'PY'
+from pathlib import Path
+import shlex
+
+root = Path.cwd().resolve()
+executable = root / ".venv/bin/stockviz-mcp-consumer"
+config = root / "config.json"
+if not executable.is_file() or not config.is_file():
+    raise SystemExit("Run this from the installed project root after pip install -e .")
+print(shlex.join([str(executable), "--config", str(config), "serve"]))
+PY
+)"
+printf '%s\n' "$GOOSE_COMMAND"
+goose session --with-extension "$GOOSE_COMMAND"
 ```
 
-Start with a tool timeout of 300 seconds. The extension exposes
+The last line starts a Goose CLI session with the local extension. For a
+persistent setup, run `goose configure` → `Add Extension` → `Command-line
+Extension`. Paste the **entire printed line**, including its quotes, into the
+command field. In Goose Desktop, add a custom STDIO extension and paste that
+same line into **Command**. Set the timeout to **300 seconds** initially and
+leave environment variables empty. Longer or queued downloads may need a larger
+timeout. Do not enter the remote HTTP MCP URL for this local downloader.
+
+Goose does not expand placeholders, `~`, or shell variables in a pasted Command.
+Paste the printed absolute command, not `$GOOSE_COMMAND` or the generator above.
+Keep its quotes: an unquoted path containing spaces can produce "Failed to start
+extension" or "No such file or directory". If a file is missing, check that you
+installed from the outer project folder and that both the executable and
+`config.json` still exist at the printed paths. After moving the project,
+recreate `.venv` with the install steps and generate the command again.
+
+Running the printed `serve` command manually normally stays quiet while waiting
+for MCP messages on stdin; this is not a hung download. Press Ctrl-C to stop it,
+then let Goose launch it. The configured `output_dir` resolves beside
+`config.json`, independent of Goose's working directory; the default is the
+project's `exports/`. Do not put OAuth tokens in Goose's settings.
+
+The extension exposes
 `download_nav_history`, `download_index_history`, `download_equity_history`
 and the read-only catalog tool `list_equities`. Ask Goose to use these local
 download tools and return file metadata instead of copying remote tool results.
