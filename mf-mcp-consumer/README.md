@@ -109,6 +109,9 @@ Long resets (such as 300 seconds), daily quotas, query timeouts and unknown erro
 fail without a completed CSV. Safe diagnostics report the recognized category,
 retry/reset metadata and retained partial path, not raw SDK messages. Partial
 files cannot be resumed; wait or fix the cause before starting a new export.
+The exact plain-text MCP error `MariaDB read unavailable (PROTOCOL_SEQUENCE_TIMEOUT)`
+is reported as `code=query_timeout, category=query_timeout` rather than invalid
+JSON. It stops immediately without an automatic retry or a completed CSV.
 
 ## Use from Goose
 
