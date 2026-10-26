@@ -4,6 +4,40 @@ This directory contains `mcp-consumer-share.zip`, a source-only distribution of
 a local downloader for compatible NAV, index and raw equity MCP history tools. It saves all
 pages to a CSV without asking a language model to copy rows or pagination tokens.
 
+## Release 0.2.0: mixed authentication and refresh
+
+The StockViz server permits public handshake and tool discovery. Discovery alone
+is not authentication. This release makes `login` exercise the protected tool-call
+boundary and check its own persisted OAuth credentials before reporting success.
+The login probe requests no history rows.
+
+New production access tokens last 24 hours. The server also issues a rotating
+refresh token with a 30-day absolute lifetime. The consumer refreshes access when
+its saved expiry requires it and persists the replacement refresh token. It also
+keeps discovered OAuth endpoint metadata privately, so a restarted process uses
+the correct token endpoint. Activity
+and rotation do not extend the original refresh deadline. Previously issued
+access tokens keep their original expiry.
+
+An older cache may contain only an access token. Its next expiry then requires
+a browser login before automatic refresh becomes available. To reauthorize
+immediately, select a new private `--state-dir` for login and keep that same
+state directory for later commands/Goose; a still-valid cached access token does
+not force a fresh login. After obtaining a refresh credential, CLI downloads and
+the stdio extension refresh noninteractively. Rejected refresh credentials are
+removed from this cache; run `login` again. Discovery success alone does not
+remove the authentication requirement.
+
+Keep one operation at a time for a shared OAuth cache. Refresh tokens are single
+use: concurrent refreshes or retrying an already-consumed token can revoke the
+whole refresh family. Do not copy or share the cache, force retries, or place
+credentials in config files. Revoking a refresh family does not invalidate
+already-issued access tokens before their own expiry.
+
+To upgrade, extract the new ZIP into a clean directory and follow the install
+commands below. Point Goose at the newly installed executable. Keep your own
+existing private config/cache if appropriate; do not copy someone else's state.
+
 ## Install
 
 Use Python 3.11 or later on Linux/macOS (POSIX). Install on the same machine
@@ -54,7 +88,10 @@ Sign in with the included config:
 .venv/bin/stockviz-mcp-consumer --config config.json login
 ```
 
-Complete browser authorization using your own account. Each user creates their
+The command prints an authorization link even if no browser opens automatically.
+Open that exact link and complete browser authorization using your own account.
+The callback must reach the CLI machine: use its browser or forward the displayed
+loopback port over SSH. Never paste passwords or callback codes into chat. Each user creates their
 own private OAuth cache. Do not copy another person's cache or put credentials
 into the config file. If authorization expires and cannot refresh, run login
 again.
