@@ -4,6 +4,58 @@ This directory contains `mcp-consumer-share.zip`, a source-only distribution of
 a local downloader for compatible NAV, index and raw equity MCP history tools. It saves all
 pages to a CSV without asking a language model to copy rows or pagination tokens.
 
+## Release 0.2.1: remote AUM tool compatibility
+
+This is a documentation and compatibility release; CSV download commands and
+local tool contracts are unchanged. The remote StockViz MCP service replaces
+`query_amfi_analytics` with three separately discoverable tools:
+
+- `get_amfi_aum_ranking`: rank consolidated funds or categories at one report.
+  Optional inputs: `group_by` (fund/category), one of `period`, `year`, `as_of`,
+  plus `category`, `search`, `limit`, `cursor`.
+- `get_amfi_aum_growth`: compare and rank AUM changes. `start` is required;
+  optional inputs are `end`, `group_by`, `category`, `search`, `rank_by`
+  (percent/absolute), `limit`, `cursor`.
+- `get_amfi_category_aum_history`: category AUM history with fixed category
+  grouping. Optional inputs: `category`, `start`, `end`, `limit`, `cursor`.
+
+These are remote MCP tools, not new CLI subcommands or local stdio tools.
+Call them through the remote StockViz MCP connection, enabled separately from
+the local CSV downloader in Goose. The downloader does not proxy analytics or
+export AUM results to CSV. Its four local tools remain unchanged.
+
+The following JSON objects are `tools/call` parameters, not shell commands:
+
+```json
+{"name":"get_amfi_aum_ranking","arguments":{"as_of":"2019-01-31","category":"mid cap","limit":2}}
+```
+
+```json
+{"name":"get_amfi_aum_growth","arguments":{"start":"2020-01-01","end":"2021-01-01","category":"large cap","limit":2}}
+```
+
+```json
+{"name":"get_amfi_category_aum_history","arguments":{"category":"index","start":"2020-01-01","end":"2020-12-31","limit":2}}
+```
+
+Do not send an `operation` selector. Remote discovery is public; tool invocation
+still requires your own OAuth grant with `research:read`. Each AUM tool publishes
+its own schema and description, with read-only, nondestructive, idempotent and
+closed-catalog annotations. Reconnect the remote extension to refresh its cached
+tool list; upgrading this local downloader does not reload another extension.
+
+AUM is average assets, not investment returns or fund inflows. Values use INR
+lakh and INR crore (100 lakh = one crore). Fund grouping combines plan/option
+variants using a name heuristic. Latest classification is not historical
+point-in-time classification; retain returned coverage and data-quality warnings.
+Use the resolved source dates, not assumed monthly observations. For complete
+remote results, forward each exact `page.next_cursor` with unchanged filters and
+limit until `page.has_more` is false. The remote page maximum is 100 rows and
+pages do not share a database snapshot.
+
+Upgrade using the clean-directory install instructions below. Your own existing
+0.2.0 config and OAuth cache remain compatible; do not copy another user's cache.
+
 ## Release 0.2.0: mixed authentication and refresh
 
 The StockViz server permits public handshake and tool discovery. Discovery alone
