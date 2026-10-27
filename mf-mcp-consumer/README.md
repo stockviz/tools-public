@@ -4,6 +4,65 @@ This directory contains `mcp-consumer-share.zip`, a source-only distribution of
 a local downloader for compatible NAV, index and raw equity MCP history tools. It saves all
 pages to a CSV without asking a language model to copy rows or pagination tokens.
 
+## Release 0.3.0: dashboard discovery, queries, and CSV exports
+
+Dashboard support is now available in the CLI and local stdio extension. It uses
+all compatible datasets published by the remote dashboard catalog, without a local
+per-table allowlist. Source coverage remains the publisher's responsibility; this
+release does not add small-cap funds or manufacture unavailable data.
+
+Use the same private config and normal `login` command as before. Authentication,
+OAuth cache handling, scopes, and SDK versions are unchanged. Existing 0.2.x
+configs remain compatible; never copy another user's OAuth cache.
+
+```sh
+python -m mcp_consumer --config config.json dashboard-datasets --page-size 100
+python -m mcp_consumer --config config.json dashboard-query --dataset-name DASHBOARD_MF_RETURNS --page-size 2
+python -m mcp_consumer --config config.json dashboard --dataset-name DASHBOARD_OPTION_IV --page-size 7 --output option-iv.csv
+```
+
+`dashboard-datasets` returns one bounded catalog page. Follow `page.next_cursor`
+with `--cursor` and identical search/page size when `has_more` is true. The catalog
+provides exact dataset names, row counts, schemas, provenance, and quality metadata.
+`dashboard-query` returns one bounded data page; continue it with identical filters
+and page size. Both commands print JSON, including bounded rows and opaque cursors.
+Do not alter, trim, or reconstruct continuation strings.
+
+`dashboard` follows all pages internally and returns file metadata rather than
+rows or cursors. The CSV header follows the published schema, including `ROW_ID`.
+The result includes row/page counts, SHA-256, schema, publication metadata, request,
+and warnings. Existing files are never replaced. Interrupted or rejected exports
+retain clearly named partial files, not a completed CSV. Default `--max-pages` is
+10000; reaching that bound before the last page fails rather than silently truncating.
+
+Query and export filters:
+
+- `--entity-column` and `--entity` must appear together. Advertised text columns
+  use literal case-insensitive substring matching; advertised integer columns use
+  exact canonical decimal strings. Discover the schema first.
+- `--date-column` requires `--start`, `--end`, or both. Dates are inclusive ISO
+  calendar dates. For example, filter MF returns with `--date-column AS_OF`.
+- `--page-size` is from 1 to 200, default 100. Server account-wide start, volume,
+  rate, and concurrency limits still apply. This release does not grant trusted
+  access or bypass quotas.
+
+The stdio extension adds three distinct tools:
+
+- `list_dashboard_datasets`: one bounded discovery page, with schema and metadata.
+- `query_dashboard_dataset`: one bounded data page, with optional entity/date filters.
+- `download_dashboard_dataset`: a complete CSV export to a confined new basename;
+  returns metadata only. It shares the two export slots with NAV/index/equity exports.
+
+All three use the consumer's own authenticated remote connection. Restart the
+extension to refresh its local tool catalog. Missing sources or `data_gap` responses
+are failures, not successful empty downloads. A genuinely available empty dataset
+can produce a header-only CSV. Publication digest, schema, or refresh generation
+changes stop an export; restart with a new filename rather than mixing generations.
+Numeric database text is preserved without float conversion. CSV NULL values use
+empty cells, so CSV alone cannot distinguish NULL from an empty string; bounded
+JSON queries preserve that distinction. Text is not spreadsheet-formula escaped;
+import untrusted narrative fields as text rather than executing them in a spreadsheet.
+
 ## Release 0.2.1: remote AUM tool compatibility
 
 This is a documentation and compatibility release; CSV download commands and
@@ -21,8 +80,9 @@ local tool contracts are unchanged. The remote StockViz MCP service replaces
 
 These are remote MCP tools, not new CLI subcommands or local stdio tools.
 Call them through the remote StockViz MCP connection, enabled separately from
-the local CSV downloader in Goose. The downloader does not proxy analytics or
-export AUM results to CSV. Its four local tools remain unchanged.
+the local CSV downloader in Goose. The downloader does not proxy AUM operations or
+export AUM results to CSV. Release 0.2.1 left its four local tools unchanged;
+release 0.3.0 adds the dashboard tools described above.
 
 The following JSON objects are `tools/call` parameters, not shell commands:
 
