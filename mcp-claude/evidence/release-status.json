@@ -23,7 +23,11 @@
     "readiness_checker_tests_passed": 15
   },
   "public_documentation": {
-    "status": "publication_in_progress",
+    "status": "published_and_anonymously_verified",
+    "verified_content_commit": "4f458eee60cda46310f587e0f0cf44452a39b7a4",
+    "documentation_http_status": 200,
+    "privacy_policy_http_status": 200,
+    "documentation_and_privacy_bytes_match_local": true,
     "documentation_url": "https://github.com/stockviz/tools-public/blob/main/mcp-claude/README.md",
     "privacy_policy_url": "https://github.com/stockviz/tools-public/blob/main/mcp-claude/privacy-policy.md"
   },
