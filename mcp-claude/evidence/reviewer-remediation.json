@@ -1,0 +1,127 @@
+{
+  "verified_at_utc": "2026-11-10T17:21:53.412637+00:00",
+  "scope": "Three reviewer defect regressions; not a new all-tools Claude custom-connector acceptance run",
+  "status": "passed",
+  "source_commit": "0db9b5de4bd84679e585a69c1dac08f5f0aebf07",
+  "production_version": "20862411-3ec8-41d9-995a-1f9d7d66e719",
+  "rollback_version": "c8214d09-dd43-4866-b3b1-1cf6fce78b39",
+  "traffic_percentage": 100,
+  "binding_records_preserved": 27,
+  "authentication": "Genuine fresh browser OAuth, state-matched callback and PKCE exchange; credentials excluded",
+  "nav_searches": [
+    {
+      "search": "Parag Parikh Flexi Cap Fund - Direct",
+      "seconds": 2.347,
+      "rows_on_first_page": 2,
+      "status": "ok"
+    },
+    {
+      "search": "Parag Parikh",
+      "seconds": 1.652,
+      "rows_on_first_page": 5,
+      "status": "ok"
+    },
+    {
+      "search": "Parag Parikh Flexi",
+      "seconds": 1.768,
+      "rows_on_first_page": 4,
+      "status": "ok"
+    }
+  ],
+  "historical_name_catalog": {
+    "distinct_tuples": 61277,
+    "scheme_count": 38066,
+    "exact_pre_and_post_publication_verification": true,
+    "bootstrap_seconds": 1719.5,
+    "nav_and_other_replicas_unchanged": true,
+    "installed_mirror_maintenance": true,
+    "mirror_lock_released": true,
+    "maintenance_caveat": "Full tuple verification adds historical scanning when NAV changes; unchanged daily NAV skips catalog scans."
+  },
+  "pagination": {
+    "search": "Parag Parikh",
+    "page_size": 2,
+    "pages": 14,
+    "schemes": 28,
+    "codes_names_dates_counts_match_native": true
+  },
+  "unknown_id_errors": [
+    {
+      "tool": "get_strategy_definition",
+      "status": "not_found",
+      "isError": true,
+      "hint": "Use list_strategies to discover published strategy_id values."
+    },
+    {
+      "tool": "get_strategy_portfolio",
+      "status": "not_found",
+      "isError": true,
+      "hint": "Use list_strategies to discover published strategy_id values."
+    },
+    {
+      "tool": "get_strategy_backtest",
+      "status": "not_found",
+      "isError": true,
+      "hint": "Use list_strategies to discover published strategy_id values."
+    },
+    {
+      "tool": "search_backtests",
+      "status": "not_found",
+      "isError": true,
+      "hint": "Use list_strategies to discover published strategy_id values."
+    },
+    {
+      "tool": "get_backtest_summary",
+      "status": "not_found",
+      "isError": true,
+      "hint": "Use search_backtests to discover published run_id values."
+    },
+    {
+      "tool": "get_backtest_metrics",
+      "status": "not_found",
+      "isError": true,
+      "hint": "Use search_backtests to discover published run_id values."
+    },
+    {
+      "tool": "compare_strategies",
+      "status": "not_found",
+      "isError": true,
+      "hint": "Use search_backtests to discover published run_id values."
+    }
+  ],
+  "parallel_acceptance": {
+    "baseline_strategy_burst_successes": 2,
+    "baseline_strategy_burst_failures": 6,
+    "fixed_strategy_burst_successes": 8,
+    "fixed_strategy_burst_failures": 0,
+    "mixed_burst_successes": 8,
+    "mixed_burst_calls": 8,
+    "mixed_burst_wall_seconds": 6.207,
+    "client_retries": 0,
+    "admission_wait_limit_seconds": 8,
+    "active_concurrency_and_quota_caps_retained": true
+  },
+  "local_verification": {
+    "worker_tests": 1142,
+    "worker_files": 53,
+    "worker_failures": 0,
+    "typecheck": "passed",
+    "python_tests": 856,
+    "python_skipped_opt_in_integrations": 12,
+    "python_subtests": 20,
+    "selected_disposable_native_catalog_test": "passed",
+    "independent_focused_review": "no_blocking_findings"
+  },
+  "public_preflight": {
+    "passed": true,
+    "checks": 135,
+    "failed": 0,
+    "tools": 29
+  },
+  "prior_failures_preserved": [
+    "Initial helper login timed out; fresh normal browser flow subsequently succeeded",
+    "Foreground catalog bootstrap interrupted by runner timeout; own connection cancelled and unpublished stage cleaned before tracked retry",
+    "Initial broad Python collection/interpreter failures resolved by correct test environment, not unrelated code changes"
+  ],
+  "original_claude_code_acceptance_entries": "preserved_unmodified"
+}

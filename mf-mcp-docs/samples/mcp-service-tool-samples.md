@@ -169,6 +169,10 @@ does not invent successful responses.
   retained history, and eligible universes. The recipes identify source facts and
   stored calculations, not a promise to reproduce every image or report statistic.
 
+Small parallel bursts wait briefly for capacity: only definite concurrency denials are queued, for at most eight seconds, without raising active backend caps or replaying data callbacks. Quota/rate failures and exhausted/full queues remain actionable tool errors.
+
+Unknown strategy and backtest-run IDs return `isError: true` with a JSON `status: "not_found"` envelope identifying the entity/ID and a discovery hint. This applies to definition, portfolio, linked-backtest, filtered backtest search, summary, metrics and comparison tools. Known entities with unavailable research remain distinct `data_gap` cases.
+
 <a id="remote-tool-reference"></a>
 ## Remote tool reference
 
@@ -262,7 +266,7 @@ page status is `ok`.
 <a id="non-dashboard-tools"></a>
 ## Non-dashboard remote tool reference
 
-These 28 sections cover the deployed remote service tools other than the two dashboard tools. They do not include local consumer tools or an internal/legacy analytics dispatcher. Argument names, required fields, null acceptance, defaults, and structural bounds below follow the deployed `inputSchema`; additional backend checks and calculation limits are called out in each section. Do not send internal operation names or fields that a public tool does not advertise. These are read-only research tools; authenticated calls require the applicable `research:read` access. Public tool discovery does not establish data availability.
+These sections cover the deployed remote service tools other than the two dashboard tools. They do not include local consumer tools or an internal/legacy analytics dispatcher. Argument names, required fields, null acceptance, defaults, and structural bounds below follow the deployed `inputSchema`; additional backend checks and calculation limits are called out in each section. Do not send internal operation names or fields that a public tool does not advertise. These are read-only research tools; authenticated calls require the applicable `research:read` access. Public tool discovery does not establish data availability.
 
 Each JSON block is the **params object** for an MCP `tools/call` request: `{"name": "TOOL_NAME", "arguments": {...}}`, not a full JSON-RPC envelope or a successful response. Examples are schema-valid request shapes, not executed requests. Dates and search strings are illustrative and do not assert matching reports or records exist. Replace `STRATEGY_ID_FROM_DISCOVERY`, `RUN_ID_FROM_DISCOVERY`, `INDEX_NAME_FROM_DISCOVERY`, `SYMBOL_FROM_DISCOVERY`, and `SERIES_FROM_DISCOVERY` with exact values returned by their discovery tools. The numeric code `1` in NAV examples is a schema-valid numeric stand-in, **not a verified scheme**: replace it with a discovered actual plan code. Do not replace numeric identifiers with nonnumeric placeholder strings. A valid request can return empty results, null, `data_gap`, `unavailable`, partial coverage, or an error.
 
@@ -779,7 +783,7 @@ Example `tools/call` params:
 
 Discovers codes, exact stored plan/option names, date coverage, and counts from MariaDB `MF_NAV_HISTORY`. `search` is a literal case-insensitive name substring. The catalog's representative name is `MAX(SCHEME_NAME)` by database collation per code, not necessarily its latest name; history retains stored row names.
 
-This exhaustive catalog scans history and can be slow. For active-fund plan-to-code lookup, prefer a short `get_amfi_scheme_aum` search against its small latest report. A failed catalog lookup does not show that code-based NAV metrics are unavailable. Inspect actual Direct Growth names externally rather than assuming option identity from a generic fund name.
+Searched discovery filters the complete historical-name catalog before reading indexed NAV coverage for matching codes. Closed plans and historical aliases remain searchable; this is not limited to the latest AMFI report. The returned name is still the historical maximum rather than necessarily the alias that matched. Missing/unowned metadata returns `unavailable` instead of falling back to a full NAV name scan. The unfiltered catalog retains its existing coverage query. For current AMFI plan classifications/AUM, use `get_amfi_scheme_aum`; inspect actual Direct Growth names rather than inferring option identity from a generic fund name.
 
 Pagination defaults to 250 rows and permits 1–1,000. First request omits `cursor` or uses null. Continue with the exact returned `next_cursor`, unchanged selectors, search, dates, format, and limit, until `has_more=false`. Pages do not share a database snapshot; restart after mirror replacement if needed. Optional arguments accept null as omission; defaulted arguments then use their defaults. Mirror ownership does not independently verify freshness or completeness.
 
