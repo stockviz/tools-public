@@ -25,7 +25,7 @@ A published current portfolio does not establish historical holdings, fills, or 
 3. Retrieve `get_backtest_summary`. Inspect metric status, provenance, observed series, and coverage.
 4. If sufficient observations exist, choose an explicit subwindow and use `get_backtest_metrics` with the actual run ID and exact series labels. Bounds select entire monthly returns by period-end date; they do not prorate months.
 5. Optional: use `compare_strategies` for two discovered run IDs. Its `comparable` flag means summaries exist, not that dates, fees, risks, or methods match. Check those yourself. Recalculate shared windows where possible, while retaining methodology differences.
-6. Request `explain_signal` for a discovered strategy and an explicit date. The source documentation says archived decision-time inputs are unavailable and this tool returns `data_gap`. Record the actual response without inventing a trade explanation.
+6. Identify whether exact historical decision-time inputs are published. `explain_signal` has been retired because those archives are unavailable. Record that evidence gap without inventing a trade explanation.
 
 Paste this prompt:
 
@@ -35,9 +35,9 @@ the current model portfolio, and resolve its explicit backtest link. Inspect the
 linked summary and, if supported by coverage, one preselected subwindow using
 get_backtest_metrics. Separate documented rules, calculated evidence, and missing
 information. Check costs, execution timing, universe/classification history, and
-selection/holdout provenance; mark anything undocumented as unknown. Request an
-archived explanation through explain_signal but do not reconstruct missing
-signals from later realized returns. Do not treat the model as my holdings.
+selection/holdout provenance; mark anything undocumented as unknown. Historical
+signal inputs are not available through the retired explain_signal tool. Do not
+reconstruct signals from later returns or treat the model as my holdings.
 ```
 
 ## Independent exercise

@@ -1,0 +1,44 @@
+{
+  "format": "StockViz submission worksheet; not a Claude upload manifest",
+  "server_name": "StockViz",
+  "one_liner": "Research Indian mutual funds and markets with AMFI AUM and flows, NAV and index analytics, published strategies, and dashboard datasets.",
+  "description": "Connect Claude to StockViz for read-only Indian investment research. Explore AMFI fund and category average AUM, compare AUM changes, inspect reported category flows, and retrieve fund NAV, index and raw equity histories. Compare performance and drawdown metrics over explicit date windows. Inspect published StockViz strategies, model research allocations and linked backtests, or discover and query available dashboard datasets. Responses include available source dates, provenance and data-quality warnings. StockViz does not place trades, transfer money, or expose your personal portfolio. AUM growth is not fund return or net inflow; raw prices are not adjusted total returns. Research may be delayed or incomplete and is not investment advice. Sign in with your own StockViz MCP identity; account quotas apply.",
+  "server_url": "https://mutual-fund-mcp.stockviz.workers.dev/mcp",
+  "url_type": "universal",
+  "proposed_slug": "stockviz",
+  "suggested_categories": [
+    "Finance"
+  ],
+  "documentation_url": "https://github.com/stockviz/tools-public/blob/main/mcp-claude/README.md",
+  "privacy_policy_url": "https://github.com/stockviz/tools-public/blob/main/mcp-claude/privacy-policy.md",
+  "support_email": "info@stockviz.biz",
+  "company_name": "StockViz",
+  "company_website": "https://stockviz.biz/",
+  "icon_file": "assets/stockviz-icon.png",
+  "authentication": {
+    "type": "oauth_dcr",
+    "requirement": "required_when_server_asks",
+    "scope": "research:read",
+    "pkce": "S256",
+    "manual_client_secret_required": false
+  },
+  "reads_data": true,
+  "writes_financial_data": false,
+  "mcp_app": false,
+  "allowed_link_uris": [],
+  "owner_confirmations_required": [
+    "Primary review contact and eligible submitting Claude account",
+    "Reviewer identity provisioned privately",
+    "Every-tool Inspector and Claude acceptance",
+    "Permanent slug and actual portal categories",
+    "All seven compliance acknowledgments"
+  ],
+  "submission_status": "blocked_reviewer_account_and_authenticated_acceptance",
+  "owner_approved": [
+    "Privacy notice",
+    "Legal/data-rights confirmation",
+    "Retirement of explain_signal",
+    "Production deployment and public docs publication"
+  ],
+  "tool_count": 29
+}

@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+# Reviewer credentials and authenticated acceptance evidence stay private.
+.env
+.env.*
+reviewer-credentials*
+private/

@@ -42,7 +42,6 @@ still determines which publications and sources are available when you call.
   - [`get_backtest_metrics`](#tool-get_backtest_metrics)
   - [`get_index_metrics`](#tool-get_index_metrics)
   - [`get_data_quality`](#tool-get_data_quality)
-  - [`explain_signal`](#tool-explain_signal)
 - [Dashboard report recipes](#dashboard-report-recipes)
   - [Worked PMS report example](#pms-worked-example)
   - [Report-to-dataset coverage](#report-to-dataset-coverage)
@@ -1062,26 +1061,9 @@ Example `tools/call` params:
 
 <a id="tool-explain_signal"></a>
 
-### `explain_signal`
+### Archived signal limitation
 
-Looks up a published strategy and reports the limitation of explaining an archived factor-momentum decision. The current implementation returns `data_gap` because archived signals with exact decision-time inputs are unavailable; it does not reconstruct a trade signal from realized index returns or invent missing factor history. Obtain `strategy_id` with `list_strategies`. Use `YYYY-MM-DD` for `signal_date` as a convention; the deployed schema only requires a string. There is no historical-signal lookup guarantee or pagination.
-
-| Argument | Required | Type, including null support | Default | Bounds, enum, and meaning |
-| --- | --- | --- | --- | --- |
-| `strategy_id` | Required | string | No default | No additional catalog bounds. Exact published strategy identifier from list_strategies. |
-| `signal_date` | Required | string | No default | No additional catalog bounds. Requested signal date; use YYYY-MM-DD by convention, but schema imposes no date pattern. |
-
-Example `tools/call` params:
-
-```json
-{
-  "name": "explain_signal",
-  "arguments": {
-    "strategy_id": "STRATEGY_ID_FROM_DISCOVERY",
-    "signal_date": "2025-12-31"
-  }
-}
-```
+`explain_signal` was retired from the public catalog on 2026-11-10 because it could not retrieve exact archived decision-time inputs. Existing clients must refresh discovery and stop calling it. The remaining strategy definition, current model portfolio and linked backtest tools do not reconstruct historical trade decisions. Missing inputs remain unavailable; later realized returns are not a substitute.
 
 
 

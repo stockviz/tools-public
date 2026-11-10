@@ -1,0 +1,48 @@
+{
+  "scope": "29-tool directory release: local Worker tests and live public protocol acceptance; authenticated data acceptance is not complete",
+  "date": "2026-11-10",
+  "source_repository": "PortfolioManagerMf",
+  "source_commit": "f3de6b410101e2c49938b739c858e8f68baeb639",
+  "changed_files": [
+    "mcp/mutual-fund-mcp/src/mcp.ts",
+    "mcp/mutual-fund-mcp/src/usage/buckets.ts",
+    "mcp/mutual-fund-mcp/test/mcp-directory.spec.ts",
+    "mcp/mutual-fund-mcp/test/store-multi-strategy.spec.ts"
+  ],
+  "red_phase": "Title regression failed before title implementation; retirement regressions reported 4 failed and 1 passed before removal",
+  "parent_verification": {
+    "working_directory": "PortfolioManagerMf/mcp/mutual-fund-mcp",
+    "typecheck_command": "npm run typecheck",
+    "typecheck_exit_code": 0,
+    "full_suite_command": "npm test -- --run --reporter=junit --outputFile=<private scratch>/release-tests.xml",
+    "test_files_passed": 51,
+    "tests_passed": 1083,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "full_suite_exit_code": 0,
+    "diff_check_exit_code": 0,
+    "counts_source": "Parsed JUnit testsuite attributes"
+  },
+  "production_deployed": true,
+  "production_version": "c8214d09-dd43-4866-b3b1-1cf6fce78b39",
+  "prior_rollback_version": "8621d887-75e0-4a64-9e96-8c7a85a5c6da",
+  "traffic_percent": 100,
+  "all_27_binding_records_preserved": true,
+  "public_readiness_checks_passed": 135,
+  "inspector_version": "2.14.0",
+  "inspector_public_catalog_tool_count": 29,
+  "authenticated_inspector_acceptance": "blocked_no_reviewer_account",
+  "authenticated_claude_acceptance": "blocked_no_account_or_signed_in_session",
+  "retired_tools": ["explain_signal"],
+  "notes": [
+    "Public and authenticated local Worker discovery omit the retired tool; authenticated direct local calls reject it as unknown.",
+    "Historical usage records were not rewritten or deleted.",
+    "The isolated deployment config used committed binding configuration, live observability settings and --keep-vars, without plain-text variable overrides.",
+    "Existing unrelated access-policy documentation, test and Wrangler edits remain untouched.",
+    "An initial parent test invocation used the repository root and failed ENOENT; the actual Worker-directory typecheck and full suite then passed.",
+    "Initial Inspector invocation used an unsupported host Node engine; public discovery was repeated successfully with Node24 and Inspector2.14.0."
+  ],
+  "warnings": ["Node punycode deprecation", "SDK sourcemap references missing source files"],
+  "evidence_scope": "No reviewer credentials, authenticated query responses or legal portal attestations are included"
+}

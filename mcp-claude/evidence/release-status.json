@@ -1,0 +1,44 @@
+{
+  "date": "2026-11-10",
+  "submission_ready": false,
+  "submission_status": "not_submitted",
+  "technical_public_preflight": "passed",
+  "owner_approved_privacy_notice": true,
+  "owner_authorized_deployment_and_publication": true,
+  "production": {
+    "url": "https://mutual-fund-mcp.stockviz.workers.dev/mcp",
+    "version": "c8214d09-dd43-4866-b3b1-1cf6fce78b39",
+    "traffic_percent": 100,
+    "tool_count": 29,
+    "all_tools_titled_and_read_only": true,
+    "retired_tools": ["explain_signal"],
+    "public_checks_passed": 135,
+    "public_checks_failed": 0,
+    "binding_records_preserved": 27
+  },
+  "local_tests": {
+    "worker_tests_passed": 1083,
+    "worker_test_files": 51,
+    "worker_typecheck": "passed",
+    "readiness_checker_tests_passed": 15
+  },
+  "public_documentation": {
+    "status": "publication_in_progress",
+    "documentation_url": "https://github.com/stockviz/tools-public/blob/main/mcp-claude/README.md",
+    "privacy_policy_url": "https://github.com/stockviz/tools-public/blob/main/mcp-claude/privacy-policy.md"
+  },
+  "inspector_public_discovery": "passed_29_tools",
+  "reviewer_account": "not_provisioned",
+  "authenticated_inspector_each_tool": "not_run",
+  "authenticated_claude_each_tool": "not_run",
+  "blocking_requirements": [
+    "Provision a dedicated non-admin reviewer identity and supply credentials privately in the portal",
+    "Complete authenticated every-tool acceptance in MCP Inspector and a Claude custom-connector conversation"
+  ],
+  "owner_portal_actions": [
+    "Use an eligible paid Claude account and enter the primary review contact",
+    "Confirm listing slug and category availability",
+    "Review all seven compliance acknowledgments and directory terms",
+    "Submit only after blocking requirements are complete"
+  ]
+}

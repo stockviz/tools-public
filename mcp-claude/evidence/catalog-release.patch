@@ -1,0 +1,134 @@
+diff --git a/mcp/mutual-fund-mcp/src/mcp.ts b/mcp/mutual-fund-mcp/src/mcp.ts
+index d759bd6..62b141a 100644
+--- a/mcp/mutual-fund-mcp/src/mcp.ts
++++ b/mcp/mutual-fund-mcp/src/mcp.ts
+@@ -61,8 +61,11 @@ function requireScope(identity: AuthIdentity | null, scope: string): void {
+ /** Register the read-only strategy, model, and research tools. */
+ export function createServer(store: Store, identity: AuthIdentity | null, controls?: ToolAccessControl): McpServer {
+   const server = new McpServer({ name: "portfolio-manager-mf", version: "0.1.0" });
+-  /** Apply one control boundary to every registered research tool after schema validation. */
+-  const registerTool: typeof server.registerTool = (...[name, config, callback]: Parameters<typeof server.registerTool>) => server.registerTool(name, config, async (...values) => {
++  /** Supply directory titles and apply one control boundary after schema validation. */
++  const registerTool: typeof server.registerTool = (...[name, config, callback]: Parameters<typeof server.registerTool>) => server.registerTool(name, {
++    ...config,
++    title: config.title ?? name.split("_").map(word => /^(nav|amfi|aum)$/.test(word) ? word.toUpperCase() : word.charAt(0).toUpperCase() + word.slice(1)).join(" "),
++  }, async (...values) => {
+     requireScope(identity, researchScope);
+     if (!controls) return callback(...values);
+     try {
+@@ -171,13 +174,6 @@ export function createServer(store: Store, identity: AuthIdentity | null, contro
+     requireScope(identity, researchScope);
+     return result(await store.getDataQuality());
+   });
+-  registerTool("explain_signal", { annotations: researchAnnotations, description: "Explain a factor-momentum signal without inventing missing factor history.", inputSchema: { strategy_id: z.string(), signal_date: z.string() } }, async ({ strategy_id, signal_date }) => {
+-    requireScope(identity, researchScope);
+-    return readPublished(store, "research", { strategy_id, signal_date }, async () => {
+-      const strategy = await store.getStrategy(strategy_id);
+-      return { status: "data_gap", strategy, signal_date, reason: "An archived signal with its exact decision-time inputs is unavailable; use get_index_metrics for realized factor-index performance, not a reconstructed trade signal." };
+-    });
+-  });
+ 
+   return server;
+ }
+diff --git a/mcp/mutual-fund-mcp/src/usage/buckets.ts b/mcp/mutual-fund-mcp/src/usage/buckets.ts
+index ae619d4..f8dfe32 100644
+--- a/mcp/mutual-fund-mcp/src/usage/buckets.ts
++++ b/mcp/mutual-fund-mcp/src/usage/buckets.ts
+@@ -2,7 +2,7 @@ import type { AccessProfile, UsageBucket } from "../access/types";
+ 
+ export const HOUR_MS = 3_600_000;
+ const SAMPLE_LIMIT = 128;
+-const KNOWN_TOOLS = new Set(["list_dashboard_datasets", "query_dashboard_dataset", "get_equity_history", "list_equities", "get_nav_history", "get_index_history", "get_nav_metrics", "get_index_metrics", "list_nav_schemes", "list_indices", "get_amfi_datasets", "get_amfi_monthly_stats", "search_amfi_scheme_classification", "get_amfi_fund_aum", "get_amfi_scheme_aum", "get_amfi_category_aum", "get_amfi_aum_ranking", "get_amfi_aum_growth", "get_amfi_category_aum_history", "query_amfi_analytics", "query_amfi_flows", "list_strategies", "get_strategy_definition", "get_strategy_portfolio", "get_strategy_backtest", "search_backtests", "compare_strategies", "get_backtest_summary", "get_backtest_metrics", "get_data_quality", "explain_signal"]);
++const KNOWN_TOOLS = new Set(["list_dashboard_datasets", "query_dashboard_dataset", "get_equity_history", "list_equities", "get_nav_history", "get_index_history", "get_nav_metrics", "get_index_metrics", "list_nav_schemes", "list_indices", "get_amfi_datasets", "get_amfi_monthly_stats", "search_amfi_scheme_classification", "get_amfi_fund_aum", "get_amfi_scheme_aum", "get_amfi_category_aum", "get_amfi_aum_ranking", "get_amfi_aum_growth", "get_amfi_category_aum_history", "query_amfi_analytics", "query_amfi_flows", "list_strategies", "get_strategy_definition", "get_strategy_portfolio", "get_strategy_backtest", "search_backtests", "compare_strategies", "get_backtest_summary", "get_backtest_metrics", "get_data_quality"]);
+ const REASONS = new Set(["burst", "distinct_instruments", "rows", "bytes", "request_rate", "concurrency", "global_concurrency", "page_size", "state_capacity", "policy_unavailable", "query_timeout", "expired_reservation", "backend_error", "abandoned_download", "telemetry_flush"]);
+ 
+ /** Keep caller-controlled names out of aggregate metric dimensions. */
+diff --git a/mcp/mutual-fund-mcp/test/mcp-directory.spec.ts b/mcp/mutual-fund-mcp/test/mcp-directory.spec.ts
+new file mode 100644
+index 0000000..afdb982
+--- /dev/null
++++ b/mcp/mutual-fund-mcp/test/mcp-directory.spec.ts
+@@ -0,0 +1,70 @@
++import { createExecutionContext, env } from "cloudflare:test";
++import { describe, expect, it } from "vitest";
++import worker from "../src/index";
++import { metricTool } from "../src/usage/buckets";
++
++/** Exercise real Worker discovery and calls with optional local research authentication. */
++async function catalogRequest(method: string, params: Record<string, unknown>, authenticated: boolean) {
++  const response = await worker.fetch(new Request("https://example.com/mcp", {
++    method: "POST",
++    headers: {
++      Accept: "application/json, text/event-stream", "Content-Type": "application/json",
++      ...(authenticated ? { Authorization: "Bearer local:google:alice:hermes:research:read" } : {}),
++    },
++    body: JSON.stringify({ jsonrpc: "2.0", id: 2, method, params }),
++  }), { ...env, DB: undefined, ENVIRONMENT: "local", READ_BACKEND: "d1" } as unknown as Env, createExecutionContext());
++  const text = await response.text();
++  const payload = text.split("\n").find(line => line.startsWith("data:"))?.slice(5) ?? text;
++  return { response, message: JSON.parse(payload) };
++}
++
++describe("retired signal explanation", () => {
++  it.each([false, true])("omits explain_signal from tools/list (authenticated=%s)", async authenticated => {
++    const { response, message } = await catalogRequest("tools/list", {}, authenticated);
++    expect(response.status).toBe(200);
++    expect(message.error).toBeUndefined();
++    const names = message.result.tools.map((tool: { name: string }) => tool.name);
++    expect(names).not.toContain("explain_signal");
++    expect(names).toHaveLength(29);
++    expect(names).toContain("get_index_metrics");
++    expect(names).toContain("get_strategy_portfolio");
++  });
++
++  it("rejects an authenticated direct tools/call to explain_signal as unknown", async () => {
++    const { response, message } = await catalogRequest("tools/call", {
++      name: "explain_signal", arguments: { strategy_id: "factor-momentum", signal_date: "2026-10-30" },
++    }, true);
++    expect(response.status).toBe(200);
++    expect(message.error).toMatchObject({ code: -32602, message: expect.stringMatching(/not found|unknown tool/i) });
++    expect(message.result).toBeUndefined();
++  });
++
++  it("does not classify new usage under the retired tool name", () => {
++    expect(metricTool("explain_signal")).toBe("other");
++    expect(metricTool("get_index_metrics")).toBe("get_index_metrics");
++  });
++});
++
++describe("Claude directory tool discovery", () => {
++  it("advertises titled, bounded-name, read-only tools without authentication", async () => {
++    const response = await worker.fetch(new Request("https://example.com/mcp", {
++      method: "POST",
++      headers: { Accept: "application/json, text/event-stream", "Content-Type": "application/json" },
++      body: JSON.stringify({ jsonrpc: "2.0", id: 1, method: "tools/list", params: {} }),
++    }), { ...env, DB: undefined, ENVIRONMENT: "local", READ_BACKEND: "d1" } as unknown as Env, createExecutionContext());
++    expect(response.status).toBe(200);
++    const text = await response.text();
++    const listed = JSON.parse(text.startsWith("event:") || text.startsWith("data:")
++      ? text.split("\n").find(line => line.startsWith("data:"))!.slice(5)
++      : text);
++    expect(listed.error).toBeUndefined();
++    expect(listed.result.tools.length).toBeGreaterThan(0);
++    for (const tool of listed.result.tools) {
++      expect.soft(tool.title, tool.name).toBeTypeOf("string");
++      expect.soft(typeof tool.title === "string" && tool.title.trim().length > 0, tool.name).toBe(true);
++      expect.soft(tool.name.length, tool.name).toBeLessThanOrEqual(64);
++      expect.soft(tool.annotations?.readOnlyHint, tool.name).toBe(true);
++      expect.soft(tool.annotations?.destructiveHint, tool.name).toBe(false);
++    }
++  });
++});
+diff --git a/mcp/mutual-fund-mcp/test/store-multi-strategy.spec.ts b/mcp/mutual-fund-mcp/test/store-multi-strategy.spec.ts
+index 23d28da..5e6c8cd 100644
+--- a/mcp/mutual-fund-mcp/test/store-multi-strategy.spec.ts
++++ b/mcp/mutual-fund-mcp/test/store-multi-strategy.spec.ts
+@@ -296,7 +296,7 @@ describe("tool registration", () => {
+       "list_indices", "get_index_history", "list_nav_schemes", "get_nav_history",
+       "list_strategies", "get_strategy_definition", "get_strategy_portfolio", "get_strategy_backtest",
+       "search_backtests", "compare_strategies", "get_backtest_summary", "get_backtest_metrics",
+-      "get_index_metrics", "get_data_quality", "explain_signal",
++      "get_index_metrics", "get_data_quality",
+     ]);
+     for (const tool of message.result.tools) {
+       expect(tool.annotations).toMatchObject({ readOnlyHint: true, destructiveHint: false, openWorldHint: false });

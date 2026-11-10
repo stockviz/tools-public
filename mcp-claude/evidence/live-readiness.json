@@ -1,0 +1,2961 @@
+{
+  "timestamp": "2026-11-10T12:38:10.331713+00:00",
+  "base_url": "https://mutual-fund-mcp.stockviz.workers.dev",
+  "read_only": true,
+  "checks": [
+    {
+      "name": "health.status",
+      "passed": true
+    },
+    {
+      "name": "health.response",
+      "passed": true
+    },
+    {
+      "name": "authorization_server.response",
+      "passed": true
+    },
+    {
+      "name": "protected_resource.response",
+      "passed": true
+    },
+    {
+      "name": "oauth.issuer.https",
+      "passed": true
+    },
+    {
+      "name": "oauth.authorization_endpoint.https",
+      "passed": true
+    },
+    {
+      "name": "oauth.token_endpoint.https",
+      "passed": true
+    },
+    {
+      "name": "oauth.registration_endpoint.https",
+      "passed": true
+    },
+    {
+      "name": "oauth.issuer_binding",
+      "passed": true
+    },
+    {
+      "name": "oauth.resource_binding",
+      "passed": true
+    },
+    {
+      "name": "oauth.authorization_server_binding",
+      "passed": true
+    },
+    {
+      "name": "oauth.token_endpoint_auth_methods_supported",
+      "passed": true
+    },
+    {
+      "name": "oauth.grant_types_supported",
+      "passed": true
+    },
+    {
+      "name": "oauth.response_types_supported",
+      "passed": true
+    },
+    {
+      "name": "oauth.code_challenge_methods_supported",
+      "passed": true
+    },
+    {
+      "name": "catalog.complete",
+      "passed": true
+    },
+    {
+      "name": "catalog.nonempty",
+      "passed": true
+    },
+    {
+      "name": "tool.title",
+      "passed": true,
+      "detail": {
+        "tool": "list_dashboard_datasets"
+      }
+    },
+    {
+      "name": "tool.name",
+      "passed": true,
+      "detail": {
+        "tool": "list_dashboard_datasets"
+      }
+    },
+    {
+      "name": "tool.input_schema",
+      "passed": true,
+      "detail": {
+        "tool": "list_dashboard_datasets"
+      }
+    },
+    {
+      "name": "tool.annotations",
+      "passed": true,
+      "detail": {
+        "tool": "list_dashboard_datasets"
+      }
+    },
+    {
+      "name": "tool.title",
+      "passed": true,
+      "detail": {
+        "tool": "query_dashboard_dataset"
+      }
+    },
+    {
+      "name": "tool.name",
+      "passed": true,
+      "detail": {
+        "tool": "query_dashboard_dataset"
+      }
+    },
+    {
+      "name": "tool.input_schema",
+      "passed": true,
+      "detail": {
+        "tool": "query_dashboard_dataset"
+      }
+    },
+    {
+      "name": "tool.annotations",
+      "passed": true,
+      "detail": {
+        "tool": "query_dashboard_dataset"
+      }
+    },
+    {
+      "name": "tool.title",
+      "passed": true,
+      "detail": {
+        "tool": "get_amfi_datasets"
+      }
+    },
+    {
+      "name": "tool.name",
+      "passed": true,
+      "detail": {
+        "tool": "get_amfi_datasets"
+      }
+    },
+    {
+      "name": "tool.input_schema",
+      "passed": true,
+      "detail": {
+        "tool": "get_amfi_datasets"
+      }
+    },
+    {
+      "name": "tool.annotations",
+      "passed": true,
+      "detail": {
+        "tool": "get_amfi_datasets"
+      }
+    },
+    {
+      "name": "tool.title",
+      "passed": true,
+      "detail": {
+        "tool": "get_amfi_monthly_stats"
+      }
+    },
+    {
+      "name": "tool.name",
+      "passed": true,
+      "detail": {
+        "tool": "get_amfi_monthly_stats"
+      }
+    },
+    {
+      "name": "tool.input_schema",
+      "passed": true,
+      "detail": {
+        "tool": "get_amfi_monthly_stats"
+      }
+    },
+    {
+      "name": "tool.annotations",
+      "passed": true,
+      "detail": {
+        "tool": "get_amfi_monthly_stats"
+      }
+    },
+    {
+      "name": "tool.title",
+      "passed": true,
+      "detail": {
+        "tool": "search_amfi_scheme_classification"
+      }
+    },
+    {
+      "name": "tool.name",
+      "passed": true,
+      "detail": {
+        "tool": "search_amfi_scheme_classification"
+      }
+    },
+    {
+      "name": "tool.input_schema",
+      "passed": true,
+      "detail": {
+        "tool": "search_amfi_scheme_classification"
+      }
+    },
+    {
+      "name": "tool.annotations",
+      "passed": true,
+      "detail": {
+        "tool": "search_amfi_scheme_classification"
+      }
+    },
+    {
+      "name": "tool.title",
+      "passed": true,
+      "detail": {
+        "tool": "get_amfi_fund_aum"
+      }
+    },
+    {
+      "name": "tool.name",
+      "passed": true,
+      "detail": {
+        "tool": "get_amfi_fund_aum"
+      }
+    },
+    {
+      "name": "tool.input_schema",
+      "passed": true,
+      "detail": {
+        "tool": "get_amfi_fund_aum"
+      }
+    },
+    {
+      "name": "tool.annotations",
+      "passed": true,
+      "detail": {
+        "tool": "get_amfi_fund_aum"
+      }
+    },
+    {
+      "name": "tool.title",
+      "passed": true,
+      "detail": {
+        "tool": "get_amfi_scheme_aum"
+      }
+    },
+    {
+      "name": "tool.name",
+      "passed": true,
+      "detail": {
+        "tool": "get_amfi_scheme_aum"
+      }
+    },
+    {
+      "name": "tool.input_schema",
+      "passed": true,
+      "detail": {
+        "tool": "get_amfi_scheme_aum"
+      }
+    },
+    {
+      "name": "tool.annotations",
+      "passed": true,
+      "detail": {
+        "tool": "get_amfi_scheme_aum"
+      }
+    },
+    {
+      "name": "tool.title",
+      "passed": true,
+      "detail": {
+        "tool": "get_amfi_category_aum"
+      }
+    },
+    {
+      "name": "tool.name",
+      "passed": true,
+      "detail": {
+        "tool": "get_amfi_category_aum"
+      }
+    },
+    {
+      "name": "tool.input_schema",
+      "passed": true,
+      "detail": {
+        "tool": "get_amfi_category_aum"
+      }
+    },
+    {
+      "name": "tool.annotations",
+      "passed": true,
+      "detail": {
+        "tool": "get_amfi_category_aum"
+      }
+    },
+    {
+      "name": "tool.title",
+      "passed": true,
+      "detail": {
+        "tool": "get_amfi_aum_ranking"
+      }
+    },
+    {
+      "name": "tool.name",
+      "passed": true,
+      "detail": {
+        "tool": "get_amfi_aum_ranking"
+      }
+    },
+    {
+      "name": "tool.input_schema",
+      "passed": true,
+      "detail": {
+        "tool": "get_amfi_aum_ranking"
+      }
+    },
+    {
+      "name": "tool.annotations",
+      "passed": true,
+      "detail": {
+        "tool": "get_amfi_aum_ranking"
+      }
+    },
+    {
+      "name": "tool.title",
+      "passed": true,
+      "detail": {
+        "tool": "get_amfi_aum_growth"
+      }
+    },
+    {
+      "name": "tool.name",
+      "passed": true,
+      "detail": {
+        "tool": "get_amfi_aum_growth"
+      }
+    },
+    {
+      "name": "tool.input_schema",
+      "passed": true,
+      "detail": {
+        "tool": "get_amfi_aum_growth"
+      }
+    },
+    {
+      "name": "tool.annotations",
+      "passed": true,
+      "detail": {
+        "tool": "get_amfi_aum_growth"
+      }
+    },
+    {
+      "name": "tool.title",
+      "passed": true,
+      "detail": {
+        "tool": "get_amfi_category_aum_history"
+      }
+    },
+    {
+      "name": "tool.name",
+      "passed": true,
+      "detail": {
+        "tool": "get_amfi_category_aum_history"
+      }
+    },
+    {
+      "name": "tool.input_schema",
+      "passed": true,
+      "detail": {
+        "tool": "get_amfi_category_aum_history"
+      }
+    },
+    {
+      "name": "tool.annotations",
+      "passed": true,
+      "detail": {
+        "tool": "get_amfi_category_aum_history"
+      }
+    },
+    {
+      "name": "tool.title",
+      "passed": true,
+      "detail": {
+        "tool": "query_amfi_flows"
+      }
+    },
+    {
+      "name": "tool.name",
+      "passed": true,
+      "detail": {
+        "tool": "query_amfi_flows"
+      }
+    },
+    {
+      "name": "tool.input_schema",
+      "passed": true,
+      "detail": {
+        "tool": "query_amfi_flows"
+      }
+    },
+    {
+      "name": "tool.annotations",
+      "passed": true,
+      "detail": {
+        "tool": "query_amfi_flows"
+      }
+    },
+    {
+      "name": "tool.title",
+      "passed": true,
+      "detail": {
+        "tool": "get_nav_metrics"
+      }
+    },
+    {
+      "name": "tool.name",
+      "passed": true,
+      "detail": {
+        "tool": "get_nav_metrics"
+      }
+    },
+    {
+      "name": "tool.input_schema",
+      "passed": true,
+      "detail": {
+        "tool": "get_nav_metrics"
+      }
+    },
+    {
+      "name": "tool.annotations",
+      "passed": true,
+      "detail": {
+        "tool": "get_nav_metrics"
+      }
+    },
+    {
+      "name": "tool.title",
+      "passed": true,
+      "detail": {
+        "tool": "list_equities"
+      }
+    },
+    {
+      "name": "tool.name",
+      "passed": true,
+      "detail": {
+        "tool": "list_equities"
+      }
+    },
+    {
+      "name": "tool.input_schema",
+      "passed": true,
+      "detail": {
+        "tool": "list_equities"
+      }
+    },
+    {
+      "name": "tool.annotations",
+      "passed": true,
+      "detail": {
+        "tool": "list_equities"
+      }
+    },
+    {
+      "name": "tool.title",
+      "passed": true,
+      "detail": {
+        "tool": "get_equity_history"
+      }
+    },
+    {
+      "name": "tool.name",
+      "passed": true,
+      "detail": {
+        "tool": "get_equity_history"
+      }
+    },
+    {
+      "name": "tool.input_schema",
+      "passed": true,
+      "detail": {
+        "tool": "get_equity_history"
+      }
+    },
+    {
+      "name": "tool.annotations",
+      "passed": true,
+      "detail": {
+        "tool": "get_equity_history"
+      }
+    },
+    {
+      "name": "tool.title",
+      "passed": true,
+      "detail": {
+        "tool": "list_indices"
+      }
+    },
+    {
+      "name": "tool.name",
+      "passed": true,
+      "detail": {
+        "tool": "list_indices"
+      }
+    },
+    {
+      "name": "tool.input_schema",
+      "passed": true,
+      "detail": {
+        "tool": "list_indices"
+      }
+    },
+    {
+      "name": "tool.annotations",
+      "passed": true,
+      "detail": {
+        "tool": "list_indices"
+      }
+    },
+    {
+      "name": "tool.title",
+      "passed": true,
+      "detail": {
+        "tool": "get_index_history"
+      }
+    },
+    {
+      "name": "tool.name",
+      "passed": true,
+      "detail": {
+        "tool": "get_index_history"
+      }
+    },
+    {
+      "name": "tool.input_schema",
+      "passed": true,
+      "detail": {
+        "tool": "get_index_history"
+      }
+    },
+    {
+      "name": "tool.annotations",
+      "passed": true,
+      "detail": {
+        "tool": "get_index_history"
+      }
+    },
+    {
+      "name": "tool.title",
+      "passed": true,
+      "detail": {
+        "tool": "list_nav_schemes"
+      }
+    },
+    {
+      "name": "tool.name",
+      "passed": true,
+      "detail": {
+        "tool": "list_nav_schemes"
+      }
+    },
+    {
+      "name": "tool.input_schema",
+      "passed": true,
+      "detail": {
+        "tool": "list_nav_schemes"
+      }
+    },
+    {
+      "name": "tool.annotations",
+      "passed": true,
+      "detail": {
+        "tool": "list_nav_schemes"
+      }
+    },
+    {
+      "name": "tool.title",
+      "passed": true,
+      "detail": {
+        "tool": "get_nav_history"
+      }
+    },
+    {
+      "name": "tool.name",
+      "passed": true,
+      "detail": {
+        "tool": "get_nav_history"
+      }
+    },
+    {
+      "name": "tool.input_schema",
+      "passed": true,
+      "detail": {
+        "tool": "get_nav_history"
+      }
+    },
+    {
+      "name": "tool.annotations",
+      "passed": true,
+      "detail": {
+        "tool": "get_nav_history"
+      }
+    },
+    {
+      "name": "tool.title",
+      "passed": true,
+      "detail": {
+        "tool": "list_strategies"
+      }
+    },
+    {
+      "name": "tool.name",
+      "passed": true,
+      "detail": {
+        "tool": "list_strategies"
+      }
+    },
+    {
+      "name": "tool.input_schema",
+      "passed": true,
+      "detail": {
+        "tool": "list_strategies"
+      }
+    },
+    {
+      "name": "tool.annotations",
+      "passed": true,
+      "detail": {
+        "tool": "list_strategies"
+      }
+    },
+    {
+      "name": "tool.title",
+      "passed": true,
+      "detail": {
+        "tool": "get_strategy_definition"
+      }
+    },
+    {
+      "name": "tool.name",
+      "passed": true,
+      "detail": {
+        "tool": "get_strategy_definition"
+      }
+    },
+    {
+      "name": "tool.input_schema",
+      "passed": true,
+      "detail": {
+        "tool": "get_strategy_definition"
+      }
+    },
+    {
+      "name": "tool.annotations",
+      "passed": true,
+      "detail": {
+        "tool": "get_strategy_definition"
+      }
+    },
+    {
+      "name": "tool.title",
+      "passed": true,
+      "detail": {
+        "tool": "get_strategy_portfolio"
+      }
+    },
+    {
+      "name": "tool.name",
+      "passed": true,
+      "detail": {
+        "tool": "get_strategy_portfolio"
+      }
+    },
+    {
+      "name": "tool.input_schema",
+      "passed": true,
+      "detail": {
+        "tool": "get_strategy_portfolio"
+      }
+    },
+    {
+      "name": "tool.annotations",
+      "passed": true,
+      "detail": {
+        "tool": "get_strategy_portfolio"
+      }
+    },
+    {
+      "name": "tool.title",
+      "passed": true,
+      "detail": {
+        "tool": "get_strategy_backtest"
+      }
+    },
+    {
+      "name": "tool.name",
+      "passed": true,
+      "detail": {
+        "tool": "get_strategy_backtest"
+      }
+    },
+    {
+      "name": "tool.input_schema",
+      "passed": true,
+      "detail": {
+        "tool": "get_strategy_backtest"
+      }
+    },
+    {
+      "name": "tool.annotations",
+      "passed": true,
+      "detail": {
+        "tool": "get_strategy_backtest"
+      }
+    },
+    {
+      "name": "tool.title",
+      "passed": true,
+      "detail": {
+        "tool": "search_backtests"
+      }
+    },
+    {
+      "name": "tool.name",
+      "passed": true,
+      "detail": {
+        "tool": "search_backtests"
+      }
+    },
+    {
+      "name": "tool.input_schema",
+      "passed": true,
+      "detail": {
+        "tool": "search_backtests"
+      }
+    },
+    {
+      "name": "tool.annotations",
+      "passed": true,
+      "detail": {
+        "tool": "search_backtests"
+      }
+    },
+    {
+      "name": "tool.title",
+      "passed": true,
+      "detail": {
+        "tool": "compare_strategies"
+      }
+    },
+    {
+      "name": "tool.name",
+      "passed": true,
+      "detail": {
+        "tool": "compare_strategies"
+      }
+    },
+    {
+      "name": "tool.input_schema",
+      "passed": true,
+      "detail": {
+        "tool": "compare_strategies"
+      }
+    },
+    {
+      "name": "tool.annotations",
+      "passed": true,
+      "detail": {
+        "tool": "compare_strategies"
+      }
+    },
+    {
+      "name": "tool.title",
+      "passed": true,
+      "detail": {
+        "tool": "get_backtest_summary"
+      }
+    },
+    {
+      "name": "tool.name",
+      "passed": true,
+      "detail": {
+        "tool": "get_backtest_summary"
+      }
+    },
+    {
+      "name": "tool.input_schema",
+      "passed": true,
+      "detail": {
+        "tool": "get_backtest_summary"
+      }
+    },
+    {
+      "name": "tool.annotations",
+      "passed": true,
+      "detail": {
+        "tool": "get_backtest_summary"
+      }
+    },
+    {
+      "name": "tool.title",
+      "passed": true,
+      "detail": {
+        "tool": "get_backtest_metrics"
+      }
+    },
+    {
+      "name": "tool.name",
+      "passed": true,
+      "detail": {
+        "tool": "get_backtest_metrics"
+      }
+    },
+    {
+      "name": "tool.input_schema",
+      "passed": true,
+      "detail": {
+        "tool": "get_backtest_metrics"
+      }
+    },
+    {
+      "name": "tool.annotations",
+      "passed": true,
+      "detail": {
+        "tool": "get_backtest_metrics"
+      }
+    },
+    {
+      "name": "tool.title",
+      "passed": true,
+      "detail": {
+        "tool": "get_index_metrics"
+      }
+    },
+    {
+      "name": "tool.name",
+      "passed": true,
+      "detail": {
+        "tool": "get_index_metrics"
+      }
+    },
+    {
+      "name": "tool.input_schema",
+      "passed": true,
+      "detail": {
+        "tool": "get_index_metrics"
+      }
+    },
+    {
+      "name": "tool.annotations",
+      "passed": true,
+      "detail": {
+        "tool": "get_index_metrics"
+      }
+    },
+    {
+      "name": "tool.title",
+      "passed": true,
+      "detail": {
+        "tool": "get_data_quality"
+      }
+    },
+    {
+      "name": "tool.name",
+      "passed": true,
+      "detail": {
+        "tool": "get_data_quality"
+      }
+    },
+    {
+      "name": "tool.input_schema",
+      "passed": true,
+      "detail": {
+        "tool": "get_data_quality"
+      }
+    },
+    {
+      "name": "tool.annotations",
+      "passed": true,
+      "detail": {
+        "tool": "get_data_quality"
+      }
+    },
+    {
+      "name": "protected_call.http_401",
+      "passed": true
+    },
+    {
+      "name": "protected_call.www_authenticate",
+      "passed": true
+    }
+  ],
+  "endpoints": {
+    "health": {
+      "url": "https://mutual-fund-mcp.stockviz.workers.dev/healthz",
+      "status": 200
+    },
+    "authorization_server": {
+      "url": "https://mutual-fund-mcp.stockviz.workers.dev/.well-known/oauth-authorization-server",
+      "status": 200,
+      "metadata": {
+        "registration_endpoint": "https://mutual-fund-mcp.stockviz.workers.dev/oauth/register",
+        "authorization_endpoint": "https://mutual-fund-mcp.stockviz.workers.dev/authorize",
+        "token_endpoint": "https://mutual-fund-mcp.stockviz.workers.dev/oauth/token",
+        "issuer": "https://mutual-fund-mcp.stockviz.workers.dev",
+        "scopes_supported": [
+          "research:read",
+          "admin:data:write"
+        ],
+        "response_types_supported": [
+          "code"
+        ],
+        "code_challenge_methods_supported": [
+          "S256",
+          "plain"
+        ],
+        "grant_types_supported": [
+          "authorization_code",
+          "refresh_token"
+        ],
+        "token_endpoint_auth_methods_supported": [
+          "none"
+        ]
+      }
+    },
+    "protected_resource": {
+      "url": "https://mutual-fund-mcp.stockviz.workers.dev/.well-known/oauth-protected-resource",
+      "status": 200,
+      "metadata": {
+        "resource": "https://mutual-fund-mcp.stockviz.workers.dev/mcp",
+        "scopes_supported": [
+          "research:read",
+          "admin:data:write"
+        ],
+        "authorization_servers": [
+          "https://mutual-fund-mcp.stockviz.workers.dev"
+        ]
+      }
+    },
+    "tools_list": {
+      "url": "https://mutual-fund-mcp.stockviz.workers.dev/mcp"
+    },
+    "protected_call": {
+      "url": "https://mutual-fund-mcp.stockviz.workers.dev/mcp",
+      "tool": "get_data_quality",
+      "status": 401,
+      "www_authenticate": "Bearer realm=\"portfolio-manager-mf\", resource_metadata=\"https://mutual-fund-mcp.stockviz.workers.dev/.well-known/oauth-protected-resource\""
+    }
+  },
+  "tools": [
+    {
+      "name": "list_dashboard_datasets",
+      "title": "List Dashboard Datasets",
+      "description": "Discover all published public MariaDB dashboard datasets through the publication catalog, without a per-table allowlist, including equity, market, ETF, mutual-fund, index, PMS, options, macro and narrative datasets. Return row counts, schema column/type pairs, metadata and publication generation. Bounded pages; forward next_cursor with identical search and limit. Missing publications return data_gap. No account holdings or arbitrary SQL.",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "limit": {
+            "anyOf": [
+              {
+                "default": 100,
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 200
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "cursor": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 8192
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "search": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 256
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "query_dashboard_dataset",
+      "title": "Query Dashboard Dataset",
+      "description": "Read any dataset from all published public dashboard datasets returned by list_dashboard_datasets; there is no per-table allowlist. Use its exact dataset_name with ROW_ID keyset pages (maximum 200 rows). Optional entity filters use literal case-insensitive substring matching on advertised textual columns, or exact signed integer matching on advertised INT/BIGINT/INTEGER/SMALLINT/TINYINT columns (e.g. MF_CODE, SCHEME_CODE, ID). Pass integer entities as canonical decimal strings, without leading zeros or plus signs, within the advertised type range; large integers never pass through JavaScript Number. DOUBLE/DECIMAL/DATE entity columns are rejected. Inclusive start/end require an advertised DATE/DATETIME date_column. Numeric values remain database text. Omit optional inputs or pass null; forward next_cursor unchanged with identical dataset, filters and limit. Cursors expire on publication digest or refreshed timestamp change; restart then. No arbitrary SQL, joins, account data or alternate-backend fallback.",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "limit": {
+            "anyOf": [
+              {
+                "default": 100,
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 200
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "cursor": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 8192
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "dataset_name": {
+            "type": "string",
+            "pattern": "^DASHBOARD_[A-Z0-9_]{1,54}$"
+          },
+          "entity_column": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,63}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "entity": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 256
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "date_column": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,63}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "start": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "end": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "dataset_name"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get_amfi_datasets",
+      "title": "Get AMFI Datasets",
+      "description": "Discover four AMFI datasets, publication availability, date coverage, key/granularity and every column's semantic dictionary. No SQL input.",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {}
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get_amfi_monthly_stats",
+      "title": "Get AMFI Monthly Stats",
+      "description": "Read exact reported monthly CATEGORY assets, subscriptions, redemptions, net flows and folios in INR crore. For largest inflows or window rankings use query_amfi_flows. These are not individual-fund flows; AUM changes are not inflows. No cross-group sums; labels/group membership can change.",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "start": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "end": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "period": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "limit": {
+            "anyOf": [
+              {
+                "default": 100,
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 500
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "cursor": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "convert_to": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "lakh",
+                  "crore"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "section": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "A",
+                  "B",
+                  "C"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "category_group": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 254
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "category": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 254
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "flow_totals": {
+            "anyOf": [
+              {
+                "default": false,
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "search_amfi_scheme_classification",
+      "title": "Search AMFI Scheme Classification",
+      "description": "Search classification by code, class or literal text; default latest snapshot per scheme (including schemes missing from the global latest snapshot), or bounded snapshot history.",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "start": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "end": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "period": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "limit": {
+            "anyOf": [
+              {
+                "default": 100,
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 500
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "cursor": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "scheme_code": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "exclusiveMinimum": 0,
+                "maximum": 2147483647
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "class_1": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 254
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "class_2": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 254
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "search": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 254
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "latest": {
+            "anyOf": [
+              {
+                "default": true,
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get_amfi_fund_aum",
+      "title": "Get AMFI Fund AUM",
+      "description": "Read fund-house average AUM/history, optional exact-period rankings and market shares; source INR lakh, total includes overseas FOF. All fund houses in the exact period form the denominator.",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "start": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "end": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "period": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "limit": {
+            "anyOf": [
+              {
+                "default": 100,
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 500
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "cursor": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "convert_to": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "lakh",
+                  "crore"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "fund": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 254
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "search": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 254
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "rank": {
+            "anyOf": [
+              {
+                "default": false,
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get_amfi_scheme_aum",
+      "title": "Get AMFI Scheme AUM",
+      "description": "Read RAW scheme/plan average AUM/history and plan-level rankings, not consolidated fund rankings. Also resolve active fund scheme codes and exact Direct/Growth option names using a short fund-name search against the small latest report; then use get_nav_metrics for performance. This avoids a full NAV-history catalog scan. For largest underlying funds use get_amfi_aum_ranking; for fastest AUM growth use get_amfi_aum_growth; for consolidated category history use get_amfi_category_aum_history. These combine direct/regular/growth/dividend/IDCW variants. Raw INR lakh; latest-classification bias.",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "start": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "end": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "period": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "limit": {
+            "anyOf": [
+              {
+                "default": 100,
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 500
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "cursor": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "convert_to": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "lakh",
+                  "crore"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "scheme_code": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "exclusiveMinimum": 0,
+                "maximum": 2147483647
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "search": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 254
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "class_1": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 254
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "class_2": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 254
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "rank": {
+            "anyOf": [
+              {
+                "default": false,
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get_amfi_category_aum",
+      "title": "Get AMFI Category AUM",
+      "description": "Group all scheme/plan AUM for one exact PERIOD by latest per-scheme classification; keep unclassified visible. Category shares and optional comparison at another exact PERIOD; current-snapshot bias, raw INR lakh.",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "period": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "compare_period": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "convert_to": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "lakh",
+                  "crore"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "limit": {
+            "anyOf": [
+              {
+                "default": 100,
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 500
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "cursor": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "period"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get_amfi_aum_ranking",
+      "title": "Get AMFI AUM Ranking",
+      "description": "Rank consolidated underlying funds (default group_by=fund) or categories by AMFI average AUM at one report. Supports largest mid-cap, large-cap and small-cap historical fund questions. period is an exact source date: missing reports never silently roll back and can return adjacent dates and a suggested as-of query. year selects the latest report within that year; omitted selectors use the latest report. period, year and as_of are mutually exclusive. For Jan 2019 use category=mid cap,as_of=2019-01-31: as_of selects the last report on or before the cutoff, possibly before the requested month; disclose the resolved date and never claim an older report was observed January AUM. search is a literal canonical fund-name substring after consolidation. Average AUM is not NAV returns, flows or month-end assets. Sum wo-FOFD + FOFD in INR lakh; INR crore = lakh / 100, with approximate source DOUBLE sums. Canonical underlying fund grouping consolidates all direct/regular/growth/dividend/IDCW variants before filtering, including unclassified variants of a known fund; the versioned name heuristic is not an authoritative merger/rename identity. Latest classification is not historical point-in-time and can create retrospective classification/survivorship bias; missing/conflicting coverage is disclosed. Omit optional inputs or pass null. Maximum 100 rows/page; forward next_cursor unchanged with identical filters and limit until has_more is false. Cursors are context-bound and pages do not share a database snapshot. No raw SQL or D1 fallback.",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "group_by": {
+            "anyOf": [
+              {
+                "default": "fund",
+                "type": "string",
+                "enum": [
+                  "fund",
+                  "category"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "period": {
+            "description": "Exact source reporting date; missing reports remain unavailable. For a month/as-of question use as_of instead.",
+            "anyOf": [
+              {
+                "description": "Exact source reporting date; missing reports remain unavailable. For a month/as-of question use as_of instead.",
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "year": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1900,
+                "maximum": 9998
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "as_of": {
+            "description": "aum_ranking only: select the last source report on or before this cutoff; January 2019 means 2019-01-31. Disclose the resolved report date, which may precede the month.",
+            "anyOf": [
+              {
+                "description": "aum_ranking only: select the last source report on or before this cutoff; January 2019 means 2019-01-31. Disclose the resolved report date, which may precede the month.",
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "category": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "search": {
+            "description": "Literal substring of the canonical fund name, after all variants are grouped; unavailable for category history.",
+            "anyOf": [
+              {
+                "description": "Literal substring of the canonical fund name, after all variants are grouped; unavailable for category history.",
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "limit": {
+            "anyOf": [
+              {
+                "default": 20,
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 100
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "cursor": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 16000
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": true
+      }
+    },
+    {
+      "name": "get_amfi_aum_growth",
+      "title": "Get AMFI AUM Growth",
+      "description": "Compare and rank AMFI average AUM growth for canonical underlying funds (default group_by=fund) or categories using common source snapshots. start is required; since 2020 means 2020-01-01. Baseline is the latest report on or before start, endpoint the latest report on or before end (or latest observed if omitted). Disclose both resolved dates and endpoint values. rank_by=percent (default) excludes missing/nonpositive baselines; rank_by=absolute ranks AUM changes, never fund inflows or investment returns. Name-based matching does not link renamed funds by code overlap. An explicit category includes all observed assets at each endpoint, including fund entries/exits, rather than only survivors. search is a literal canonical fund-name substring after consolidation. Average AUM is not NAV returns, flows or month-end assets. Sum wo-FOFD + FOFD in INR lakh; INR crore = lakh / 100, with approximate source DOUBLE sums. Canonical underlying fund grouping consolidates all direct/regular/growth/dividend/IDCW variants before filtering, including unclassified variants of a known fund; the versioned name heuristic is not an authoritative merger/rename identity. Latest classification is not historical point-in-time and can create retrospective classification/survivorship bias; missing/conflicting coverage is disclosed. Omit optional inputs or pass null. Maximum 100 rows/page; forward next_cursor unchanged with identical filters and limit until has_more is false. Cursors are context-bound and pages do not share a database snapshot. No raw SQL or D1 fallback.",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "start": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+            "description": "Required inclusive baseline cutoff; select the common source report on or before this date. Since 2020 means 2020-01-01."
+          },
+          "end": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "group_by": {
+            "anyOf": [
+              {
+                "default": "fund",
+                "type": "string",
+                "enum": [
+                  "fund",
+                  "category"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "category": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "search": {
+            "description": "Literal substring of the canonical fund name, after all variants are grouped; unavailable for category history.",
+            "anyOf": [
+              {
+                "description": "Literal substring of the canonical fund name, after all variants are grouped; unavailable for category history.",
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "rank_by": {
+            "anyOf": [
+              {
+                "default": "percent",
+                "type": "string",
+                "enum": [
+                  "absolute",
+                  "percent"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "limit": {
+            "anyOf": [
+              {
+                "default": 20,
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 100
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "cursor": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 16000
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "start"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": true
+      }
+    },
+    {
+      "name": "get_amfi_category_aum_history",
+      "title": "Get AMFI Category AUM History",
+      "description": "Read AMFI category average AUM history over inclusive optional start/end bounds; category is optional and grouping is always category, never individual fund history. Each report is a separate stock: never sum AUM across report dates. Consolidate every complete source snapshot into canonical funds before category selection and summation. Process up to two complete snapshots per page within a bounded 1000-report-date window; a page may contain fewer rows than limit while has_more remains true. Oversized complete snapshots fail closed rather than truncate source variants. Narrow the window if the date budget is exceeded and follow every continuation cursor for complete history. Average AUM is not NAV returns, flows or month-end assets. Sum wo-FOFD + FOFD in INR lakh; INR crore = lakh / 100, with approximate source DOUBLE sums. Canonical underlying fund grouping consolidates all direct/regular/growth/dividend/IDCW variants before filtering, including unclassified variants of a known fund; the versioned name heuristic is not an authoritative merger/rename identity. Latest classification is not historical point-in-time and can create retrospective classification/survivorship bias; missing/conflicting coverage is disclosed. Omit optional inputs or pass null. Maximum 100 rows/page; forward next_cursor unchanged with identical filters and limit until has_more is false. Cursors are context-bound and pages do not share a database snapshot. No raw SQL or D1 fallback.",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "category": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "start": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "end": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "limit": {
+            "anyOf": [
+              {
+                "default": 20,
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 100
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "cursor": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 16000
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false,
+        "idempotentHint": true
+      }
+    },
+    {
+      "name": "query_amfi_flows",
+      "title": "Query AMFI Flows",
+      "description": "Rank published AMFI category net inflows, subscriptions or redemptions, or read category flow history in exact INR crore. Year sums reported monthly flows; period is an exact report date; ranking defaults to latest report. Fund-level flows are unavailable, never proxied by AUM changes. No cross-category grand totals.",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "operation": {
+            "anyOf": [
+              {
+                "default": "ranking",
+                "type": "string",
+                "enum": [
+                  "ranking",
+                  "history"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "granularity": {
+            "anyOf": [
+              {
+                "default": "category",
+                "type": "string",
+                "enum": [
+                  "fund",
+                  "category"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "period": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "year": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1900,
+                "maximum": 2100
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "start": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "end": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "category": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 254
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "section": {
+            "anyOf": [
+              {
+                "default": "A",
+                "type": "string",
+                "enum": [
+                  "A",
+                  "B",
+                  "C"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "category_group": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 32
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "rank_by": {
+            "anyOf": [
+              {
+                "default": "net_flow",
+                "type": "string",
+                "enum": [
+                  "net_flow",
+                  "subscriptions",
+                  "redemptions"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "limit": {
+            "anyOf": [
+              {
+                "default": 20,
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 100
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "cursor": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get_nav_metrics",
+      "title": "Get NAV Metrics",
+      "description": "Calculate calendar-day CAGR, sample daily-return annualized Sharpe and window drawdowns for 1–10 exact scheme codes from owned MariaDB raw NAV. Start/end are inclusive; omitted end uses each scheme's latest observed NAV, not today. No cursor or pagination. Resolve active-fund plan codes with get_amfi_scheme_aum using a short fund-name search and inspect Direct Growth names; that small latest-report catalog avoids scanning all NAV history. If a NAV catalog/cursor lookup fails, do not infer that code-based NAV metrics are unavailable. Raw NAV is not adjusted for distributions: select actual Direct Growth schemes externally. At most 30000 raw rows per scheme; conflicting duplicate dates or invalid NAV refuse metrics.",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "scheme_codes": {
+            "minItems": 1,
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[1-9]\\d{0,9}$"
+                },
+                {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 2147483647
+                }
+              ]
+            }
+          },
+          "start": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "end": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "risk_free_rate": {
+            "anyOf": [
+              {
+                "default": 0,
+                "type": "number",
+                "exclusiveMinimum": -1,
+                "maximum": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "scheme_codes"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "list_equities",
+      "title": "List Equities",
+      "description": "Discover exact SYMBOL/SERIES pairs in the read-only MariaDB PX_HISTORY mirror with date coverage, literal case-insensitive symbol search and an optional exact series filter. Output is bounded, but broad catalogs scan history and can be slow or time out with the current date-only index. Follow next_cursor with unchanged search, series and limit; first request omits cursor or uses null.",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "limit": {
+            "anyOf": [
+              {
+                "default": 250,
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 1000
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "cursor": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "search": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 256
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "series": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 256
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get_equity_history",
+      "title": "Get Equity History",
+      "description": "Download raw stored OHLC, last/previous close, traded quantity/value and transaction count for one explicit symbol AND series from PX_HISTORY, with inclusive dates and JSON or CSV pages. These are not adjusted prices or total returns. Nullable source fields remain null; DOUBLE fields are database text, not arbitrary-precision decimals. Duplicate dates fail closed with data_gap because the source has no stable tie key; all pages must succeed for a full download. Prefer bounded dates: broad history reads may time out. Forward next_cursor unchanged with identical symbol, series, dates, format and limit. Never infer a window peak/latest value from one partial page. No account holdings are exposed.",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "limit": {
+            "anyOf": [
+              {
+                "default": 250,
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 1000
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "cursor": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "start": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "end": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "format": {
+            "anyOf": [
+              {
+                "default": "json",
+                "type": "string",
+                "enum": [
+                  "json",
+                  "csv"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "symbol": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          },
+          "series": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          }
+        },
+        "required": [
+          "symbol",
+          "series"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "list_indices",
+      "title": "List Indices",
+      "description": "Discover every index in the MariaDB BHAV_INDEX mirror with available date ranges; no factor-index allowlist. Follow next_cursor for subsequent pages.",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "limit": {
+            "anyOf": [
+              {
+                "default": 250,
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 1000
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "cursor": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "search": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 256
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get_index_history",
+      "title": "Get Index History",
+      "description": "Download stored raw daily index closing prices for any exact index name, with optional inclusive dates and JSON or CSV format. For peak/latest values, current drawdown or performance use get_index_metrics instead: it summarizes the full window without client pagination. For a download follow next_cursor until has_more is false; a partial page cannot establish the window peak or latest stored value. No inferred adjustments or missing prices.",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "limit": {
+            "anyOf": [
+              {
+                "default": 250,
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 1000
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "cursor": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "start": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "end": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "format": {
+            "anyOf": [
+              {
+                "default": "json",
+                "type": "string",
+                "enum": [
+                  "json",
+                  "csv"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "index_name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256
+          }
+        },
+        "required": [
+          "index_name"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "list_nav_schemes",
+      "title": "List NAV Schemes",
+      "description": "Discover scheme codes and exact plan/option names in the MariaDB NAV mirror with case-insensitive literal name search. First request: omit cursor or use null, never a placeholder string. Reuse next_cursor only with unchanged search and limit. For active fund name/plan-to-code lookup prefer get_amfi_scheme_aum with a short fund-name search: it reads the small latest AMFI report, whereas this exhaustive NAV catalog scans history and can be slow. Use get_nav_metrics with exact Direct Growth codes for CAGR/Sharpe/current drawdown; do not download history or refuse metrics just because a catalog lookup failed.",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "limit": {
+            "anyOf": [
+              {
+                "default": 250,
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 1000
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "cursor": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "search": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 256
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get_nav_history",
+      "title": "Get NAV History",
+      "description": "Download stored raw NAV observations for any scheme code, with optional inclusive dates and JSON or CSV format. Follow next_cursor until has_more is false for full history; prices are not portfolio holdings or total-return adjustments.",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "limit": {
+            "anyOf": [
+              {
+                "default": 250,
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 1000
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "cursor": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "start": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "end": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "format": {
+            "anyOf": [
+              {
+                "default": "json",
+                "type": "string",
+                "enum": [
+                  "json",
+                  "csv"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "scheme_code": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[1-9]\\d{0,9}$"
+              },
+              {
+                "type": "integer",
+                "exclusiveMinimum": 0,
+                "maximum": 2147483647
+              }
+            ]
+          }
+        },
+        "required": [
+          "scheme_code"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "list_strategies",
+      "title": "List Strategies",
+      "description": "List published mutual-fund strategies.",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {}
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get_strategy_definition",
+      "title": "Get Strategy Definition",
+      "description": "Return exact strategy rules, current model portfolio, and provenance.",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "strategy_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "strategy_id"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get_strategy_portfolio",
+      "title": "Get Strategy Portfolio",
+      "description": "Return the current mutual-fund model portfolio for a published strategy, including scheme codes, names, factors, weights, and as-of date.",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "strategy_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "strategy_id"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get_strategy_backtest",
+      "title": "Get Strategy Backtest",
+      "description": "Resolve a published strategy to its single linked backtest run.",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "strategy_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "strategy_id"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "search_backtests",
+      "title": "Search Backtests",
+      "description": "List published backtest runs; a strategy_id resolves only to its linked run.",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "strategy_id": {
+            "type": "string"
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "compare_strategies",
+      "title": "Compare Strategies",
+      "description": "Compare published backtest summaries by run ID.",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "run_ids": {
+            "minItems": 1,
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "run_ids"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get_backtest_summary",
+      "title": "Get Backtest Summary",
+      "description": "Return metrics and provenance for a backtest run.",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "run_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "run_id"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get_backtest_metrics",
+      "title": "Get Backtest Metrics",
+      "description": "Calculate performance metrics for arbitrary backtest windows directly from published monthly observations.",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "run_id": {
+            "type": "string"
+          },
+          "series": {
+            "minItems": 1,
+            "maxItems": 20,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "start": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "end": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          }
+        },
+        "required": [
+          "run_id"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get_index_metrics",
+      "title": "Get Index Metrics",
+      "description": "Compare up to twenty named indices available on the server over a daily date window; returns compact metrics and a winner only for aligned, covered windows. For peak/latest/current drawdown questions use this tool, not paginated history. It reads the full selected history and returns FirstValue, LatestValue (dated by window_end), PeakValue, PeakDate and CurrentDD (a negative fraction from the window peak). Omitted/null end means latest observed data. Discover names with list_indices; get_index_history is only for raw downloads. Never treat the last row of a page with has_more as the latest stored observation.",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "indices": {
+            "anyOf": [
+              {
+                "minItems": 1,
+                "maxItems": 20,
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 256
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "start": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "end": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get_data_quality",
+      "title": "Get Data Quality",
+      "description": "Return dataset freshness and validation status.",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {}
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    }
+  ],
+  "tool_count": 29,
+  "passed": true,
+  "failed_check_count": 0
+}

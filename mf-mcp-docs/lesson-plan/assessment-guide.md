@@ -31,7 +31,7 @@ In lesson 2, none of the four claims is supported as written. AUM growth is not 
 
 In lesson 4, `get_index_metrics` chooses its winner by full-window total return, not safety. Its matching-date requirements can refuse a comparison. That refusal is evidence of an unmet input condition, not evidence that an index is inferior.
 
-In lesson 5, `compare_strategies.comparable` does not certify matching methodologies. `explain_signal` cannot supply missing archived inputs by narrating what happened afterward. A useful audit can conclude that a claim remains untestable.
+In lesson 5, `compare_strategies.comparable` does not certify matching methodologies. The retired `explain_signal` tool does not supply archived inputs; narrating what happened afterward cannot replace them. A useful audit can conclude that a claim remains untestable.
 
 In lesson 6, monthly PMS returns are neither stored annualized returns nor Sharpe. Manager and strategy AUM are not interchangeable. Exact report output can depend on additional cached paths, gates, and transformations absent from the fact tables.
 

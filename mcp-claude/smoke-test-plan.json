@@ -1,0 +1,376 @@
+{
+  "status": "not_executed",
+  "catalog_source": "29-tool release candidate; verify against deployed public catalog",
+  "tool_count": 29,
+  "instructions": [
+    "Resolve all *_FROM_DISCOVERY placeholders from real current catalogs, preserving the advertised types.",
+    "Replace example dates with dates covered by the actual selected dataset and signal.",
+    "These argument templates are not an executable test runner or observed successful responses.",
+    "Record Inspector and Claude acceptance independently; data_gap or unavailable is not populated-data success."
+  ],
+  "cases": [
+    {
+      "tool": "list_dashboard_datasets",
+      "arguments_template": {
+        "search": "PMS",
+        "limit": 20
+      },
+      "required_arguments": [],
+      "inspector_status": "not_run",
+      "claude_status": "not_run",
+      "evidence": null
+    },
+    {
+      "tool": "query_dashboard_dataset",
+      "arguments_template": {
+        "dataset_name": "DASHBOARD_MF_RETURNS",
+        "limit": 2
+      },
+      "required_arguments": [
+        "dataset_name"
+      ],
+      "inspector_status": "not_run",
+      "claude_status": "not_run",
+      "evidence": null
+    },
+    {
+      "tool": "get_amfi_datasets",
+      "arguments_template": {},
+      "required_arguments": [],
+      "inspector_status": "not_run",
+      "claude_status": "not_run",
+      "evidence": null
+    },
+    {
+      "tool": "get_amfi_monthly_stats",
+      "arguments_template": {
+        "period": "2025-12-31",
+        "section": "A",
+        "limit": 20
+      },
+      "required_arguments": [],
+      "inspector_status": "not_run",
+      "claude_status": "not_run",
+      "evidence": null
+    },
+    {
+      "tool": "search_amfi_scheme_classification",
+      "arguments_template": {
+        "search": "mid cap",
+        "latest": true,
+        "limit": 20
+      },
+      "required_arguments": [],
+      "inspector_status": "not_run",
+      "claude_status": "not_run",
+      "evidence": null
+    },
+    {
+      "tool": "get_amfi_fund_aum",
+      "arguments_template": {
+        "period": "2025-12-31",
+        "rank": true,
+        "convert_to": "crore",
+        "limit": 10
+      },
+      "required_arguments": [],
+      "inspector_status": "not_run",
+      "claude_status": "not_run",
+      "evidence": null
+    },
+    {
+      "tool": "get_amfi_scheme_aum",
+      "arguments_template": {
+        "search": "Parag Parikh",
+        "limit": 20
+      },
+      "required_arguments": [],
+      "inspector_status": "not_run",
+      "claude_status": "not_run",
+      "evidence": null
+    },
+    {
+      "tool": "get_amfi_category_aum",
+      "arguments_template": {
+        "period": "2025-12-31",
+        "compare_period": "2024-12-31",
+        "convert_to": "crore"
+      },
+      "required_arguments": [
+        "period"
+      ],
+      "inspector_status": "not_run",
+      "claude_status": "not_run",
+      "evidence": null
+    },
+    {
+      "tool": "get_amfi_aum_ranking",
+      "arguments_template": {
+        "category": "mid cap",
+        "as_of": "2019-01-31",
+        "limit": 10
+      },
+      "required_arguments": [],
+      "inspector_status": "not_run",
+      "claude_status": "not_run",
+      "evidence": null
+    },
+    {
+      "tool": "get_amfi_aum_growth",
+      "arguments_template": {
+        "start": "2020-01-01",
+        "end": "2025-12-31",
+        "category": "mid cap",
+        "rank_by": "percent",
+        "limit": 10
+      },
+      "required_arguments": [
+        "start"
+      ],
+      "inspector_status": "not_run",
+      "claude_status": "not_run",
+      "evidence": null
+    },
+    {
+      "tool": "get_amfi_category_aum_history",
+      "arguments_template": {
+        "category": "mid cap",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "limit": 20
+      },
+      "required_arguments": [],
+      "inspector_status": "not_run",
+      "claude_status": "not_run",
+      "evidence": null
+    },
+    {
+      "tool": "query_amfi_flows",
+      "arguments_template": {
+        "operation": "ranking",
+        "year": 2025,
+        "granularity": "category",
+        "rank_by": "net_flow",
+        "limit": 10
+      },
+      "required_arguments": [],
+      "inspector_status": "not_run",
+      "claude_status": "not_run",
+      "evidence": null
+    },
+    {
+      "tool": "get_nav_metrics",
+      "arguments_template": {
+        "scheme_codes": [
+          "SCHEME_CODE_FROM_DISCOVERY"
+        ],
+        "start": "2020-01-01",
+        "end": "2025-12-31",
+        "risk_free_rate": 0.05
+      },
+      "required_arguments": [
+        "scheme_codes"
+      ],
+      "inspector_status": "not_run",
+      "claude_status": "not_run",
+      "evidence": null
+    },
+    {
+      "tool": "list_equities",
+      "arguments_template": {
+        "search": "RELIANCE",
+        "series": "EQ",
+        "limit": 20
+      },
+      "required_arguments": [],
+      "inspector_status": "not_run",
+      "claude_status": "not_run",
+      "evidence": null
+    },
+    {
+      "tool": "get_equity_history",
+      "arguments_template": {
+        "symbol": "SYMBOL_FROM_DISCOVERY",
+        "series": "SERIES_FROM_DISCOVERY",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "format": "csv",
+        "limit": 250
+      },
+      "required_arguments": [
+        "symbol",
+        "series"
+      ],
+      "inspector_status": "not_run",
+      "claude_status": "not_run",
+      "evidence": null
+    },
+    {
+      "tool": "list_indices",
+      "arguments_template": {
+        "search": "NIFTY",
+        "limit": 20
+      },
+      "required_arguments": [],
+      "inspector_status": "not_run",
+      "claude_status": "not_run",
+      "evidence": null
+    },
+    {
+      "tool": "get_index_history",
+      "arguments_template": {
+        "index_name": "INDEX_NAME_FROM_DISCOVERY",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "format": "json",
+        "limit": 250
+      },
+      "required_arguments": [
+        "index_name"
+      ],
+      "inspector_status": "not_run",
+      "claude_status": "not_run",
+      "evidence": null
+    },
+    {
+      "tool": "list_nav_schemes",
+      "arguments_template": {
+        "search": "Parag Parikh",
+        "limit": 20
+      },
+      "required_arguments": [],
+      "inspector_status": "not_run",
+      "claude_status": "not_run",
+      "evidence": null
+    },
+    {
+      "tool": "get_nav_history",
+      "arguments_template": {
+        "scheme_code": "SCHEME_CODE_FROM_DISCOVERY",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "format": "csv",
+        "limit": 250
+      },
+      "required_arguments": [
+        "scheme_code"
+      ],
+      "inspector_status": "not_run",
+      "claude_status": "not_run",
+      "evidence": null
+    },
+    {
+      "tool": "list_strategies",
+      "arguments_template": {},
+      "required_arguments": [],
+      "inspector_status": "not_run",
+      "claude_status": "not_run",
+      "evidence": null
+    },
+    {
+      "tool": "get_strategy_definition",
+      "arguments_template": {
+        "strategy_id": "STRATEGY_ID_FROM_DISCOVERY"
+      },
+      "required_arguments": [
+        "strategy_id"
+      ],
+      "inspector_status": "not_run",
+      "claude_status": "not_run",
+      "evidence": null
+    },
+    {
+      "tool": "get_strategy_portfolio",
+      "arguments_template": {
+        "strategy_id": "STRATEGY_ID_FROM_DISCOVERY"
+      },
+      "required_arguments": [
+        "strategy_id"
+      ],
+      "inspector_status": "not_run",
+      "claude_status": "not_run",
+      "evidence": null
+    },
+    {
+      "tool": "get_strategy_backtest",
+      "arguments_template": {
+        "strategy_id": "STRATEGY_ID_FROM_DISCOVERY"
+      },
+      "required_arguments": [
+        "strategy_id"
+      ],
+      "inspector_status": "not_run",
+      "claude_status": "not_run",
+      "evidence": null
+    },
+    {
+      "tool": "search_backtests",
+      "arguments_template": {},
+      "required_arguments": [],
+      "inspector_status": "not_run",
+      "claude_status": "not_run",
+      "evidence": null
+    },
+    {
+      "tool": "compare_strategies",
+      "arguments_template": {
+        "run_ids": [
+          "RUN_ID_FROM_DISCOVERY"
+        ]
+      },
+      "required_arguments": [
+        "run_ids"
+      ],
+      "inspector_status": "not_run",
+      "claude_status": "not_run",
+      "evidence": null
+    },
+    {
+      "tool": "get_backtest_summary",
+      "arguments_template": {
+        "run_id": "RUN_ID_FROM_DISCOVERY"
+      },
+      "required_arguments": [
+        "run_id"
+      ],
+      "inspector_status": "not_run",
+      "claude_status": "not_run",
+      "evidence": null
+    },
+    {
+      "tool": "get_backtest_metrics",
+      "arguments_template": {
+        "run_id": "RUN_ID_FROM_DISCOVERY",
+        "start": "2020-01-01",
+        "end": "2025-12-31"
+      },
+      "required_arguments": [
+        "run_id"
+      ],
+      "inspector_status": "not_run",
+      "claude_status": "not_run",
+      "evidence": null
+    },
+    {
+      "tool": "get_index_metrics",
+      "arguments_template": {
+        "indices": [
+          "INDEX_NAME_FROM_DISCOVERY"
+        ],
+        "start": "2025-01-01"
+      },
+      "required_arguments": [],
+      "inspector_status": "not_run",
+      "claude_status": "not_run",
+      "evidence": null
+    },
+    {
+      "tool": "get_data_quality",
+      "arguments_template": {},
+      "required_arguments": [],
+      "inspector_status": "not_run",
+      "claude_status": "not_run",
+      "evidence": null
+    }
+  ]
+}
