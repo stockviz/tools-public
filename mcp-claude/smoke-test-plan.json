@@ -18,7 +18,16 @@
       "required_arguments": [],
       "inspector_status": "not_run",
       "claude_status": "not_run",
-      "evidence": null
+      "evidence": {
+        "client": "Claude Code (HTTP MCP, OAuth sign-in), not a claude.ai custom connector",
+        "run_window_utc": "2026-11-10, approx. 13:50-13:56 UTC",
+        "arguments": {
+          "search": "PMS",
+          "limit": 3
+        },
+        "note": "3 datasets; DASHBOARD_PMS_AUM has 22688 rows."
+      },
+      "claude_code_status": "pass"
     },
     {
       "tool": "query_dashboard_dataset",
@@ -31,7 +40,19 @@
       ],
       "inspector_status": "not_run",
       "claude_status": "not_run",
-      "evidence": null
+      "evidence": {
+        "client": "Claude Code (HTTP MCP, OAuth sign-in), not a claude.ai custom connector",
+        "run_window_utc": "2026-11-10, approx. 13:50-13:56 UTC",
+        "arguments": {
+          "dataset_name": "DASHBOARD_PMS_AUM",
+          "date_column": "AS_OF",
+          "start": "2026-09-01",
+          "end": "2026-09-30",
+          "limit": 2
+        },
+        "note": "Rows dated 2026-09-30."
+      },
+      "claude_code_status": "pass"
     },
     {
       "tool": "get_amfi_datasets",
@@ -39,7 +60,13 @@
       "required_arguments": [],
       "inspector_status": "not_run",
       "claude_status": "not_run",
-      "evidence": null
+      "evidence": {
+        "client": "Claude Code (HTTP MCP, OAuth sign-in), not a claude.ai custom connector",
+        "run_window_utc": "2026-11-10, approx. 13:50-13:56 UTC",
+        "arguments": {},
+        "note": "4 datasets; AMFI_MONTHLY_STATS 2019-04-30 to 2026-09-30."
+      },
+      "claude_code_status": "pass"
     },
     {
       "tool": "get_amfi_monthly_stats",
@@ -51,7 +78,19 @@
       "required_arguments": [],
       "inspector_status": "not_run",
       "claude_status": "not_run",
-      "evidence": null
+      "evidence": {
+        "client": "Claude Code (HTTP MCP, OAuth sign-in), not a claude.ai custom connector",
+        "run_window_utc": "2026-11-10, approx. 13:50-13:56 UTC",
+        "arguments": {
+          "period": "2026-09-30",
+          "section": "A",
+          "category_group": "II",
+          "limit": 3
+        },
+        "note": "13 matching categories. category='Mid Cap' returned status empty; the source label is 'Mid Cap Fund'.",
+        "retest_note": "Retest 2026-11-11 (Claude Code): unchanged: category='Mid Cap' returns empty; needs exact 'Mid Cap Fund'."
+      },
+      "claude_code_status": "pass"
     },
     {
       "tool": "search_amfi_scheme_classification",
@@ -63,7 +102,16 @@
       "required_arguments": [],
       "inspector_status": "not_run",
       "claude_status": "not_run",
-      "evidence": null
+      "evidence": {
+        "client": "Claude Code (HTTP MCP, OAuth sign-in), not a claude.ai custom connector",
+        "run_window_utc": "2026-11-10, approx. 13:50-13:56 UTC",
+        "arguments": {
+          "search": "Parag Parikh Flexi Cap",
+          "limit": 3
+        },
+        "note": "4 matches; classification snapshot 2026-11-07; codes 122639, 122640, 153964 on page 1."
+      },
+      "claude_code_status": "pass"
     },
     {
       "tool": "get_amfi_fund_aum",
@@ -76,7 +124,18 @@
       "required_arguments": [],
       "inspector_status": "not_run",
       "claude_status": "not_run",
-      "evidence": null
+      "evidence": {
+        "client": "Claude Code (HTTP MCP, OAuth sign-in), not a claude.ai custom connector",
+        "run_window_utc": "2026-11-10, approx. 13:50-13:56 UTC",
+        "arguments": {
+          "period": "2026-09-30",
+          "rank": true,
+          "convert_to": "crore",
+          "limit": 2
+        },
+        "note": "57 fund houses; rank 1 SBI Mutual Fund."
+      },
+      "claude_code_status": "pass"
     },
     {
       "tool": "get_amfi_scheme_aum",
@@ -87,7 +146,17 @@
       "required_arguments": [],
       "inspector_status": "not_run",
       "claude_status": "not_run",
-      "evidence": null
+      "evidence": {
+        "client": "Claude Code (HTTP MCP, OAuth sign-in), not a claude.ai custom connector",
+        "run_window_utc": "2026-11-10, approx. 13:50-13:56 UTC",
+        "arguments": {
+          "search": "Parag Parikh Flexi Cap",
+          "period": "2026-09-30",
+          "limit": 5
+        },
+        "note": "4 plans; 122639 is Direct Plan - Growth."
+      },
+      "claude_code_status": "pass"
     },
     {
       "tool": "get_amfi_category_aum",
@@ -101,7 +170,18 @@
       ],
       "inspector_status": "not_run",
       "claude_status": "not_run",
-      "evidence": null
+      "evidence": {
+        "client": "Claude Code (HTTP MCP, OAuth sign-in), not a claude.ai custom connector",
+        "run_window_utc": "2026-11-10, approx. 13:50-13:56 UTC",
+        "arguments": {
+          "period": "2026-09-30",
+          "convert_to": "crore",
+          "limit": 2
+        },
+        "note": "95 groups. Label defect: CLASS_1 'children', CLASS_2 's fund - childrens' fund'.",
+        "retest_note": "Retest 2026-11-11 (Claude Code): children's-fund label fixed; now 'solution oriented' / \"children's fund\" (37 rows), classification snapshot 2026-11-11; 74 groups; denominator unchanged at 895066680.96 lakh. Remaining: 'index' / 'funds - debt funds' (12 rows, stale snapshot 2026-10-31); empty CLASS_2 for 'elss' and 'income'."
+      },
+      "claude_code_status": "pass"
     },
     {
       "tool": "get_amfi_aum_ranking",
@@ -113,7 +193,17 @@
       "required_arguments": [],
       "inspector_status": "not_run",
       "claude_status": "not_run",
-      "evidence": null
+      "evidence": {
+        "client": "Claude Code (HTTP MCP, OAuth sign-in), not a claude.ai custom connector",
+        "run_window_utc": "2026-11-10, approx. 13:50-13:56 UTC",
+        "arguments": {
+          "category": "mid cap",
+          "as_of": "2026-09-30",
+          "limit": 2
+        },
+        "note": "Resolved 2026-09-30; 34 groups; rank 1 HDFC Mid Cap Fund."
+      },
+      "claude_code_status": "pass"
     },
     {
       "tool": "get_amfi_aum_growth",
@@ -129,7 +219,19 @@
       ],
       "inspector_status": "not_run",
       "claude_status": "not_run",
-      "evidence": null
+      "evidence": {
+        "client": "Claude Code (HTTP MCP, OAuth sign-in), not a claude.ai custom connector",
+        "run_window_utc": "2026-11-10, approx. 13:50-13:56 UTC",
+        "arguments": {
+          "start": "2025-09-30",
+          "end": "2026-09-30",
+          "category": "mid cap",
+          "rank_by": "absolute",
+          "limit": 2
+        },
+        "note": "31 groups; 3 funds disclosed as missing_start."
+      },
+      "claude_code_status": "pass"
     },
     {
       "tool": "get_amfi_category_aum_history",
@@ -142,7 +244,18 @@
       "required_arguments": [],
       "inspector_status": "not_run",
       "claude_status": "not_run",
-      "evidence": null
+      "evidence": {
+        "client": "Claude Code (HTTP MCP, OAuth sign-in), not a claude.ai custom connector",
+        "run_window_utc": "2026-11-10, approx. 13:50-13:56 UTC",
+        "arguments": {
+          "category": "mid cap",
+          "start": "2026-06-01",
+          "end": "2026-09-30",
+          "limit": 3
+        },
+        "note": "2 report dates: 2026-06-30 and 2026-09-30."
+      },
+      "claude_code_status": "pass"
     },
     {
       "tool": "query_amfi_flows",
@@ -156,7 +269,19 @@
       "required_arguments": [],
       "inspector_status": "not_run",
       "claude_status": "not_run",
-      "evidence": null
+      "evidence": {
+        "client": "Claude Code (HTTP MCP, OAuth sign-in), not a claude.ai custom connector",
+        "run_window_utc": "2026-11-10, approx. 13:50-13:56 UTC",
+        "arguments": {
+          "operation": "ranking",
+          "period": "2026-09-30",
+          "rank_by": "net_flow",
+          "limit": 2
+        },
+        "note": "56 categories; rank 1 Equity ETF. window_flow_totals returned all 56 categories despite limit=2.",
+        "retest_note": "Retest 2026-11-11 (Claude Code): unchanged: window_flow_totals still lists all 56 categories with limit=2."
+      },
+      "claude_code_status": "pass"
     },
     {
       "tool": "get_nav_metrics",
@@ -173,7 +298,21 @@
       ],
       "inspector_status": "not_run",
       "claude_status": "not_run",
-      "evidence": null
+      "evidence": {
+        "client": "Claude Code (HTTP MCP, OAuth sign-in), not a claude.ai custom connector",
+        "run_window_utc": "2026-11-10, approx. 13:50-13:56 UTC",
+        "arguments": {
+          "scheme_codes": [
+            "122639",
+            "118989"
+          ],
+          "start": "2025-10-01",
+          "end": "2026-10-30"
+        },
+        "note": "245 observations for 122639 vs 264 for 118989 over the same window, with coverage_gap=false.",
+        "retest_note": "Retest 2026-11-11 (Claude Code): unchanged: 245 vs 264 observations over same window, coverage_gap=false."
+      },
+      "claude_code_status": "pass"
     },
     {
       "tool": "list_equities",
@@ -185,7 +324,17 @@
       "required_arguments": [],
       "inspector_status": "not_run",
       "claude_status": "not_run",
-      "evidence": null
+      "evidence": {
+        "client": "Claude Code (HTTP MCP, OAuth sign-in), not a claude.ai custom connector",
+        "run_window_utc": "2026-11-10, approx. 13:50-13:56 UTC",
+        "arguments": {
+          "search": "INFY",
+          "series": "EQ",
+          "limit": 5
+        },
+        "note": "INFY/EQ covers 1994-11-03 to 2026-11-09."
+      },
+      "claude_code_status": "pass"
     },
     {
       "tool": "get_equity_history",
@@ -203,7 +352,19 @@
       ],
       "inspector_status": "not_run",
       "claude_status": "not_run",
-      "evidence": null
+      "evidence": {
+        "client": "Claude Code (HTTP MCP, OAuth sign-in), not a claude.ai custom connector",
+        "run_window_utc": "2026-11-10, approx. 13:50-13:56 UTC",
+        "arguments": {
+          "symbol": "INFY",
+          "series": "EQ",
+          "start": "2026-11-02",
+          "end": "2026-11-09",
+          "limit": 2
+        },
+        "note": "Populated first page."
+      },
+      "claude_code_status": "pass"
     },
     {
       "tool": "list_indices",
@@ -214,7 +375,16 @@
       "required_arguments": [],
       "inspector_status": "not_run",
       "claude_status": "not_run",
-      "evidence": null
+      "evidence": {
+        "client": "Claude Code (HTTP MCP, OAuth sign-in), not a claude.ai custom connector",
+        "run_window_utc": "2026-11-10, approx. 13:50-13:56 UTC",
+        "arguments": {
+          "search": "NIFTY 50",
+          "limit": 5
+        },
+        "note": "NIFTY 50 covers 1990-07-03 to 2026-11-09."
+      },
+      "claude_code_status": "pass"
     },
     {
       "tool": "get_index_history",
@@ -230,7 +400,18 @@
       ],
       "inspector_status": "not_run",
       "claude_status": "not_run",
-      "evidence": null
+      "evidence": {
+        "client": "Claude Code (HTTP MCP, OAuth sign-in), not a claude.ai custom connector",
+        "run_window_utc": "2026-11-10, approx. 13:50-13:56 UTC",
+        "arguments": {
+          "index_name": "NIFTY 50",
+          "start": "2026-11-02",
+          "end": "2026-11-09",
+          "limit": 3
+        },
+        "note": "Populated first page."
+      },
+      "claude_code_status": "pass"
     },
     {
       "tool": "list_nav_schemes",
@@ -241,7 +422,16 @@
       "required_arguments": [],
       "inspector_status": "not_run",
       "claude_status": "not_run",
-      "evidence": null
+      "evidence": {
+        "client": "Claude Code (HTTP MCP, OAuth sign-in), not a claude.ai custom connector",
+        "run_window_utc": "2026-11-10, approx. 13:50-13:56 UTC",
+        "arguments": {
+          "limit": 5
+        },
+        "note": "Unfiltered call passed. Name searches 'Parag Parikh Flexi Cap Fund - Direct', 'Parag Parikh' and 'Parag Parikh Flexi' each failed with MariaDB read unavailable (PROTOCOL_SEQUENCE_TIMEOUT).",
+        "retest_note": "Retest 2026-11-11 (Claude Code): name searches 'Parag Parikh Flexi', 'Parag Parikh Flexi Cap Fund - Direct', 'Parag Parikh', 'HDFC Mid Cap' all returned rows; no timeout. Row name for 122639 shows older 'Long Term Value' name (documented MAX(SCHEME_NAME) semantics)."
+      },
+      "claude_code_status": "pass"
     },
     {
       "tool": "get_nav_history",
@@ -257,7 +447,19 @@
       ],
       "inspector_status": "not_run",
       "claude_status": "not_run",
-      "evidence": null
+      "evidence": {
+        "client": "Claude Code (HTTP MCP, OAuth sign-in), not a claude.ai custom connector",
+        "run_window_utc": "2026-11-10, approx. 13:50-13:56 UTC",
+        "arguments": {
+          "scheme_code": "122639",
+          "start": "2026-10-01",
+          "end": "2026-10-10",
+          "limit": 3
+        },
+        "note": "Two pages followed by cursor to has_more=false. Last page still warns it is partial, with contains_full_requested_history=false.",
+        "retest_note": "Retest 2026-11-11 (Claude Code): single-page window now reports contains_full_requested_history=true with has_more=false."
+      },
+      "claude_code_status": "pass"
     },
     {
       "tool": "list_strategies",
@@ -265,7 +467,13 @@
       "required_arguments": [],
       "inspector_status": "not_run",
       "claude_status": "not_run",
-      "evidence": null
+      "evidence": {
+        "client": "Claude Code (HTTP MCP, OAuth sign-in), not a claude.ai custom connector",
+        "run_window_utc": "2026-11-10, approx. 13:50-13:56 UTC",
+        "arguments": {},
+        "note": "3 strategies: factor-momentum, tactical-midcap, tactical-smallcap."
+      },
+      "claude_code_status": "pass"
     },
     {
       "tool": "get_strategy_definition",
@@ -277,7 +485,16 @@
       ],
       "inspector_status": "not_run",
       "claude_status": "not_run",
-      "evidence": null
+      "evidence": {
+        "client": "Claude Code (HTTP MCP, OAuth sign-in), not a claude.ai custom connector",
+        "run_window_utc": "2026-11-10, approx. 13:50-13:56 UTC",
+        "arguments": {
+          "strategy_id": "factor-momentum"
+        },
+        "note": "Populated. Unknown strategy_id returned bare null, not an actionable error.",
+        "retest_note": "Retest 2026-11-11 (Claude Code): unknown strategy_id now returns not_found with hint to list_strategies."
+      },
+      "claude_code_status": "pass"
     },
     {
       "tool": "get_strategy_portfolio",
@@ -289,7 +506,16 @@
       ],
       "inspector_status": "not_run",
       "claude_status": "not_run",
-      "evidence": null
+      "evidence": {
+        "client": "Claude Code (HTTP MCP, OAuth sign-in), not a claude.ai custom connector",
+        "run_window_utc": "2026-11-10, approx. 13:50-13:56 UTC",
+        "arguments": {
+          "strategy_id": "tactical-midcap"
+        },
+        "note": "As of 2026-11-04; 1 position, scheme 148726.",
+        "retest_note": "Retest 2026-11-11 (Claude Code): unknown strategy_id returns not_found with hint."
+      },
+      "claude_code_status": "pass"
     },
     {
       "tool": "get_strategy_backtest",
@@ -301,7 +527,15 @@
       ],
       "inspector_status": "not_run",
       "claude_status": "not_run",
-      "evidence": null
+      "evidence": {
+        "client": "Claude Code (HTTP MCP, OAuth sign-in), not a claude.ai custom connector",
+        "run_window_utc": "2026-11-10, approx. 13:50-13:56 UTC",
+        "arguments": {
+          "strategy_id": "tactical-smallcap"
+        },
+        "note": "Coverage 2023-04-11 to 2026-10-23."
+      },
+      "claude_code_status": "pass"
     },
     {
       "tool": "search_backtests",
@@ -309,7 +543,15 @@
       "required_arguments": [],
       "inspector_status": "not_run",
       "claude_status": "not_run",
-      "evidence": null
+      "evidence": {
+        "client": "Claude Code (HTTP MCP, OAuth sign-in), not a claude.ai custom connector",
+        "run_window_utc": "2026-11-10, approx. 13:50-13:56 UTC",
+        "arguments": {
+          "strategy_id": "factor-momentum"
+        },
+        "note": "1 linked run."
+      },
+      "claude_code_status": "pass"
     },
     {
       "tool": "compare_strategies",
@@ -323,7 +565,19 @@
       ],
       "inspector_status": "not_run",
       "claude_status": "not_run",
-      "evidence": null
+      "evidence": {
+        "client": "Claude Code (HTTP MCP, OAuth sign-in), not a claude.ai custom connector",
+        "run_window_utc": "2026-11-10, approx. 13:50-13:56 UTC",
+        "arguments": {
+          "run_ids": [
+            "factor-momentum-20260925-f3de4481b982",
+            "tactical-midcap-9dd2877fa6782c2b25900703abe9bf7b5f74d08345276d7e7dfa68301be15f69",
+            "tactical-smallcap-52464caa2a3d007f49512ba28765ca9feedcb8ad328c9effa5d0e99b8ae2121b"
+          ]
+        },
+        "note": "3 summaries; comparable=true."
+      },
+      "claude_code_status": "pass"
     },
     {
       "tool": "get_backtest_summary",
@@ -335,7 +589,16 @@
       ],
       "inspector_status": "not_run",
       "claude_status": "not_run",
-      "evidence": null
+      "evidence": {
+        "client": "Claude Code (HTTP MCP, OAuth sign-in), not a claude.ai custom connector",
+        "run_window_utc": "2026-11-10, approx. 13:50-13:56 UTC",
+        "arguments": {
+          "run_id": "factor-momentum-20260925-f3de4481b982"
+        },
+        "note": "3 series; metric_status ok. Unknown run_id returned bare null, not an actionable error.",
+        "retest_note": "Retest 2026-11-11 (Claude Code): unknown run_id now returns not_found with hint to search_backtests."
+      },
+      "claude_code_status": "pass"
     },
     {
       "tool": "get_backtest_metrics",
@@ -349,7 +612,22 @@
       ],
       "inspector_status": "not_run",
       "claude_status": "not_run",
-      "evidence": null
+      "evidence": {
+        "client": "Claude Code (HTTP MCP, OAuth sign-in), not a claude.ai custom connector",
+        "run_window_utc": "2026-11-10, approx. 13:50-13:56 UTC",
+        "arguments": {
+          "run_id": "factor-momentum-20260925-f3de4481b982",
+          "start": "2020-05-01",
+          "end": "2026-09-25",
+          "series": [
+            "Factor Rotation",
+            "NIFTY 500 TR"
+          ]
+        },
+        "note": "N=77 monthly observations; window 2020-05-29 to 2026-09-25.",
+        "retest_note": "Retest 2026-11-11 (Claude Code): unknown run_id returns not_found with hint."
+      },
+      "claude_code_status": "pass"
     },
     {
       "tool": "get_index_metrics",
@@ -362,7 +640,19 @@
       "required_arguments": [],
       "inspector_status": "not_run",
       "claude_status": "not_run",
-      "evidence": null
+      "evidence": {
+        "client": "Claude Code (HTTP MCP, OAuth sign-in), not a claude.ai custom connector",
+        "run_window_utc": "2026-11-10, approx. 13:50-13:56 UTC",
+        "arguments": {
+          "indices": [
+            "NIFTY 50"
+          ],
+          "start": "2025-11-10",
+          "end": "2026-11-09"
+        },
+        "note": "N=248; window 2025-11-10 to 2026-11-09."
+      },
+      "claude_code_status": "pass"
     },
     {
       "tool": "get_data_quality",
@@ -370,7 +660,13 @@
       "required_arguments": [],
       "inspector_status": "not_run",
       "claude_status": "not_run",
-      "evidence": null
+      "evidence": {
+        "client": "Claude Code (HTTP MCP, OAuth sign-in), not a claude.ai custom connector",
+        "run_window_utc": "2026-11-10, approx. 13:50-13:56 UTC",
+        "arguments": {},
+        "note": "Top-level status 'partial'; counts populated; bhav_index max 2026-11-09; AMFI monthly max 2026-09-30."
+      },
+      "claude_code_status": "pass"
     }
   ]
 }

@@ -11,7 +11,9 @@
     "traffic_percent": 100,
     "tool_count": 29,
     "all_tools_titled_and_read_only": true,
-    "retired_tools": ["explain_signal"],
+    "retired_tools": [
+      "explain_signal"
+    ],
     "public_checks_passed": 135,
     "public_checks_failed": 0,
     "binding_records_preserved": 27
@@ -44,5 +46,7 @@
     "Confirm listing slug and category availability",
     "Review all seven compliance acknowledgments and directory terms",
     "Submit only after blocking requirements are complete"
-  ]
+  ],
+  "authenticated_claude_code_each_tool": "ran_2026-11-10_retest_2026-11-11_29_pass",
+  "claude_code_parallel_burst_retest_2026-11-11": "passed_6_and_8_concurrent_calls"
 }
